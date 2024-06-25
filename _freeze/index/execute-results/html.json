@@ -1,0 +1,14 @@
+{
+  "hash": "9ffa7523c46c56bd215a3418c0fa4d7e",
+  "result": {
+    "markdown": "---\ntitle: \"My Lab Journal\"\nsubtitle: \"Business Data Science Basics\"\nauthor: \"Mohammad Fahad Ahmed\"\n---\n\n\n![](assets/logo/logo.png){width=80% fig-align=\"center\"}\n\nThis is a template example for lab journaling. Students in the data science courses at the Institute of Entrepreneurship will use this template to learn R for business analytics. Students can replace this text as they wish.\n\n## How to use\n\n1. Accept the assignment and get your own github repo.\n\n2. Blog/journal what you are doing in R, by editing the `.qmd` files. \n\n3. See the links page for lots of helpful links on learning R.\n\n4. Change everything to make it your own.\n\n5. Make sure to render you website everytime before you want to upload changes\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
