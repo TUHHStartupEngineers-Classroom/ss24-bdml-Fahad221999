@@ -1,5 +1,5 @@
 ---
-title: "Session 6 - Challenge - Company Segmentation"
+title: "Challenge 1 - Data Science Fundamentals"
 date: "05/30/2024"
 output: 
     html_document:

@@ -1,6 +1,6 @@
 ---
-title: "02 Supervised ML"
-date: "2020-11-05"
+title: "Challenge 2 - Supervised ML"
+date: "2020-17-06"
 output:
   html_document:
     toc: true
