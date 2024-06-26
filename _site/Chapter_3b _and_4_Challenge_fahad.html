@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.5.47">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2024-06-20">
 
-<title>MyLabJournal - Challenge 3 (II) &amp; 4 combined Automated Machine Learning and Performance Measures</title>
+<title>Challenge 3 (II) &amp; 4 combined Automated Machine Learning and Performance Measures – MyLabJournal</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -18,11 +18,12 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -47,43 +48,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -115,7 +86,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -124,8 +101,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -136,59 +115,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">MyLabJournal</span>
     </a>
   </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Journal</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">    
         <li>
-    <a class="dropdown-item" href="./content/01_journal/01_tidyverse.html">
- <span class="dropdown-text">01 Tidyverse</span></a>
+    <a class="dropdown-item" href="C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Chapter_1_Challenge_fahad.qmd">
+ <span class="dropdown-text">Challenge 1 Fundamentals of Machine Learning</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./content/01_journal/02_data_acquisition.html">
- <span class="dropdown-text">02 Data Acquisition</span></a>
+    <a class="dropdown-item" href="C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Chapter_2_Challenge-Fahad.qmd">
+ <span class="dropdown-text">Challenge 2 Supervised ML</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./content/01_journal/03_data_wrangling.html">
- <span class="dropdown-text">03 Data Wrangling</span></a>
+    <a class="dropdown-item" href="C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Chapter_3_Challenge_fahad.qmd">
+ <span class="dropdown-text">Challenge 3 Automated Machine Learning with H2O (I)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./content/01_journal/04_data_visualization.html">
- <span class="dropdown-text">04 Data Visualization</span></a>
+    <a class="dropdown-item" href="C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Chapter_3b _and_4_Challenge_fahad.qmd">
+ <span class="dropdown-text">Challenge 3b and 4 Automated Machine Learning with H2O (II) and Precision Measuring</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/05_lime.qmd">
+ <span class="dropdown-text">Challenge 5 Lime</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./content/02_notes/05_class_notes.html">
- <span class="menu-text">Class notes</span></a>
+    <a class="nav-link" href="./content/02_notes/05_class_notes.html"> 
+<span class="menu-text">Class notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./content/03_other/06_links.html">
- <span class="menu-text">Links</span></a>
+    <a class="nav-link" href="./content/03_other/06_links.html"> 
+<span class="menu-text">Links</span></a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
-                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-              </div>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -221,16 +204,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
   
 
+
 </header>
 
-<div class="cell" data-hash="Chapter_3b-_and_4_Challenge_fahad_cache/html/unnamed-chunk-1_03d2d8585846bf60beb06f215939913b">
+
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(h2o)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(recipes)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rsample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="Chapter_3b-_and_4_Challenge_fahad_cache/html/unnamed-chunk-2_139aa3738815cd8d134e87272d55376f">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>product_backorders_tbl <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Business Decisions with Machine Learning/product_backorders.txt"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(product_backorders_tbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -261,13 +246,13 @@ $ rev_stop          &lt;chr&gt; "No", "No", "No", "No", "No", "No", "No", "No", 
 $ went_on_backorder &lt;chr&gt; "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Ye…</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="Chapter_3b-_and_4_Challenge_fahad_cache/html/unnamed-chunk-3_6192f15682777d9684efa04956a8e897">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>recipe_obj <span class="ot">&lt;-</span> <span class="fu">recipe</span>(went_on_backorder <span class="sc">~</span> ., <span class="at">data =</span> product_backorders_tbl) <span class="sc">%&gt;%</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_zv</span>(<span class="fu">all_predictors</span>()) <span class="sc">%&gt;%</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_mutate_at</span>(potential_issue, deck_risk, oe_constraint, ppap_risk, stop_auto_buy, rev_stop, <span class="at">fn =</span> as.factor) <span class="sc">%&gt;%</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prep</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="Chapter_3b-_and_4_Challenge_fahad_cache/html/unnamed-chunk-4_f7fae172f71ed099aeee7e4602036e4b">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>split_obj <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(product_backorders_tbl, <span class="at">prop =</span> <span class="fl">0.85</span>)</span>
@@ -277,21 +262,21 @@ $ went_on_backorder &lt;chr&gt; "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes",
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>train_tbl <span class="ot">&lt;-</span> <span class="fu">bake</span>(recipe_obj, <span class="at">new_data =</span> train_readable_tbl)</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>test_tbl  <span class="ot">&lt;-</span> <span class="fu">bake</span>(recipe_obj, <span class="at">new_data =</span> test_readable_tbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="Chapter_3b-_and_4_Challenge_fahad_cache/html/unnamed-chunk-5_eee0e07f2e27a72c6823b96250445a04">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">h2o.init</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 H2O is not running yet, starting it now...
 
 Note:  In case of errors look at the following log files:
-    C:\Users\Lenovo\AppData\Local\Temp\RtmpYh8ymY\file4d947cd86317/h2o_Lenovo_started_from_r.out
-    C:\Users\Lenovo\AppData\Local\Temp\RtmpYh8ymY\file4d9460a46251/h2o_Lenovo_started_from_r.err
+    C:\Users\Lenovo\AppData\Local\Temp\RtmpotJ9VK\file17fc6018f3/h2o_Lenovo_started_from_r.out
+    C:\Users\Lenovo\AppData\Local\Temp\RtmpotJ9VK\file17fc1fcc3462/h2o_Lenovo_started_from_r.err
 
 
 Starting H2O JVM and connecting:  Connection successful!
 
 R is connected to the H2O cluster: 
-    H2O cluster uptime:         2 seconds 452 milliseconds 
+    H2O cluster uptime:         4 seconds 81 milliseconds 
     H2O cluster timezone:       Europe/Berlin 
     H2O data parsing timezone:  UTC 
     H2O cluster version:        3.44.0.3 
@@ -329,7 +314,7 @@ R is connected to the H2O cluster:
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="st">"went_on_backorder"</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="fu">names</span>(train_h2o), y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="Chapter_3b-_and_4_Challenge_fahad_cache/html/unnamed-chunk-6_0711d26c57bff4cd578cf9b1a5cce3cf">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>automl_models_h2o <span class="ot">&lt;-</span> <span class="fu">h2o.automl</span>(</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> x,</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> y,</span>
@@ -345,52 +330,52 @@ R is connected to the H2O cluster:
   |                                                                      |   0%
   |                                                                            
   |=                                                                     |   1%
-23:27:05.701: User specified a validation frame with cross-validation still enabled. Please note that the models will still be validated using cross-validation only, the validation frame will be used to provide purely informative validation metrics on the trained models.
-23:27:05.719: AutoML: XGBoost is not available; skipping it.
+11:22:50.406: User specified a validation frame with cross-validation still enabled. Please note that the models will still be validated using cross-validation only, the validation frame will be used to provide purely informative validation metrics on the trained models.
+11:22:50.432: AutoML: XGBoost is not available; skipping it.
   |                                                                            
-  |==                                                                    |   3%
+  |===                                                                   |   4%
   |                                                                            
-  |====                                                                  |   5%
+  |====                                                                  |   6%
   |                                                                            
   |=====                                                                 |   7%
   |                                                                            
   |=======                                                               |  10%
   |                                                                            
-  |========                                                              |  11%
+  |=========                                                             |  12%
   |                                                                            
-  |=========                                                             |  13%
+  |==========                                                            |  14%
   |                                                                            
-  |==========                                                            |  15%
+  |===========                                                           |  16%
   |                                                                            
-  |============                                                          |  17%
+  |=============                                                         |  18%
   |                                                                            
-  |=============                                                         |  19%
+  |==============                                                        |  20%
   |                                                                            
-  |===============                                                       |  21%
+  |===============                                                       |  22%
   |                                                                            
-  |================                                                      |  23%
+  |=================                                                     |  24%
   |                                                                            
-  |=================                                                     |  25%
+  |==================                                                    |  25%
   |                                                                            
-  |==================                                                    |  26%
+  |===================                                                   |  27%
   |                                                                            
-  |====================                                                  |  28%
+  |====================                                                  |  29%
   |                                                                            
-  |=====================                                                 |  30%
+  |=====================                                                 |  31%
   |                                                                            
-  |=======================                                               |  32%
+  |=======================                                               |  33%
   |                                                                            
   |========================                                              |  34%
   |                                                                            
   |=========================                                             |  36%
   |                                                                            
-  |==========================                                            |  38%
+  |===========================                                           |  38%
   |                                                                            
-  |============================                                          |  39%
+  |============================                                          |  40%
   |                                                                            
-  |=============================                                         |  41%
+  |=============================                                         |  42%
   |                                                                            
-  |==============================                                        |  44%
+  |==============================                                        |  43%
   |                                                                            
   |================================                                      |  45%
   |                                                                            
@@ -402,15 +387,15 @@ R is connected to the H2O cluster:
   |                                                                            
   |=====================================                                 |  52%
   |                                                                            
-  |======================================                                |  55%
+  |======================================                                |  54%
   |                                                                            
-  |========================================                              |  56%
+  |=======================================                               |  56%
   |                                                                            
-  |=========================================                             |  59%
+  |=========================================                             |  58%
   |                                                                            
   |==========================================                            |  60%
   |                                                                            
-  |===========================================                           |  62%
+  |============================================                          |  62%
   |                                                                            
   |=============================================                         |  64%
   |                                                                            
@@ -418,33 +403,33 @@ R is connected to the H2O cluster:
   |                                                                            
   |===============================================                       |  68%
   |                                                                            
-  |================================================                      |  69%
+  |=================================================                     |  70%
   |                                                                            
   |==================================================                    |  71%
   |                                                                            
   |===================================================                   |  73%
   |                                                                            
-  |====================================================                  |  75%
+  |=====================================================                 |  75%
   |                                                                            
-  |=====================================================                 |  76%
+  |======================================================                |  77%
   |                                                                            
   |=======================================================               |  79%
   |                                                                            
-  |=========================================================             |  81%
+  |========================================================              |  80%
   |                                                                            
-  |==========================================================            |  83%
+  |==========================================================            |  82%
   |                                                                            
-  |============================================================          |  85%
+  |===========================================================           |  84%
   |                                                                            
-  |=============================================================         |  87%
+  |============================================================          |  86%
   |                                                                            
-  |===============================================================       |  90%
+  |==============================================================        |  89%
   |                                                                            
-  |================================================================      |  92%
+  |================================================================      |  91%
   |                                                                            
-  |==================================================================    |  94%
+  |=================================================================     |  93%
   |                                                                            
-  |===================================================================   |  96%
+  |===================================================================   |  95%
   |                                                                            
   |====================================================================  |  97%
   |                                                                            
@@ -453,7 +438,7 @@ R is connected to the H2O cluster:
   |======================================================================| 100%</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="Chapter_3b-_and_4_Challenge_fahad_cache/html/unnamed-chunk-7_6e16b0a6a48409cb0f0daaca2824bdee">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(automl_models_h2o)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "S4"</code></pre>
@@ -466,21 +451,21 @@ R is connected to the H2O cluster:
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>automl_models_h2o<span class="sc">@</span>leaderboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                                 model_id       auc   logloss
-1    StackedEnsemble_AllModels_3_AutoML_1_20240625_232705 0.9548733 0.1728805
-2    StackedEnsemble_AllModels_2_AutoML_1_20240625_232705 0.9547081 0.1727886
-3 StackedEnsemble_BestOfFamily_4_AutoML_1_20240625_232705 0.9540194 0.1735851
-4    StackedEnsemble_AllModels_1_AutoML_1_20240625_232705 0.9536971 0.1739514
-5 StackedEnsemble_BestOfFamily_3_AutoML_1_20240625_232705 0.9532465 0.1740056
-6 StackedEnsemble_BestOfFamily_2_AutoML_1_20240625_232705 0.9519997 0.1755682
+1 StackedEnsemble_BestOfFamily_3_AutoML_1_20240626_112250 0.9561234 0.1719370
+2    StackedEnsemble_AllModels_3_AutoML_1_20240626_112250 0.9560200 0.1708690
+3    StackedEnsemble_AllModels_2_AutoML_1_20240626_112250 0.9558390 0.1710644
+4    StackedEnsemble_AllModels_1_AutoML_1_20240626_112250 0.9538012 0.1738048
+5 StackedEnsemble_BestOfFamily_2_AutoML_1_20240626_112250 0.9530344 0.1764172
+6                          GBM_4_AutoML_1_20240626_112250 0.9520364 0.1791385
       aucpr mean_per_class_error      rmse        mse
-1 0.7604330            0.1382261 0.2289064 0.05239816
-2 0.7599018            0.1437114 0.2285484 0.05223435
-3 0.7593345            0.1402798 0.2293229 0.05258898
-4 0.7579727            0.1542829 0.2290666 0.05247150
-5 0.7559415            0.1583134 0.2298750 0.05284250
-6 0.7565212            0.1483599 0.2310066 0.05336406
+1 0.7587667            0.1479800 0.2289585 0.05242201
+2 0.7665524            0.1492160 0.2278504 0.05191579
+3 0.7655005            0.1487976 0.2280735 0.05201754
+4 0.7587346            0.1506517 0.2294995 0.05267003
+5 0.7464036            0.1331207 0.2313708 0.05353243
+6 0.7409863            0.1284338 0.2332589 0.05440969
 
-[29 rows x 7 columns] </code></pre>
+[23 rows x 7 columns] </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>automl_models_h2o<span class="sc">@</span>leader</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -488,14 +473,14 @@ R is connected to the H2O cluster:
 ==============
 
 H2OBinomialModel: stackedensemble
-Model ID:  StackedEnsemble_AllModels_3_AutoML_1_20240625_232705 
+Model ID:  StackedEnsemble_BestOfFamily_3_AutoML_1_20240626_112250 
 Model Summary for Stacked Ensemble: 
                                          key            value
 1                          Stacking strategy cross_validation
-2       Number of base models (used / total)             9/22
-3           # GBM base models (used / total)             8/14
+2       Number of base models (used / total)              2/5
+3           # GBM base models (used / total)              1/1
 4           # DRF base models (used / total)              1/2
-5  # DeepLearning base models (used / total)              0/5
+5  # DeepLearning base models (used / total)              0/1
 6           # GLM base models (used / total)              0/1
 7                      Metalearner algorithm              GLM
 8         Metalearner fold assignment scheme           Random
@@ -507,157 +492,157 @@ Model Summary for Stacked Ensemble:
 H2OBinomialMetrics: stackedensemble
 ** Reported on training data. **
 
-MSE:  0.02437821
-RMSE:  0.1561352
-LogLoss:  0.0933589
-Mean Per-Class Error:  0.06967836
-AUC:  0.9906361
-AUCPR:  0.9460185
-Gini:  0.9812722
+MSE:  0.01932387
+RMSE:  0.1390103
+LogLoss:  0.07927591
+Mean Per-Class Error:  0.05012764
+AUC:  0.9950306
+AUCPR:  0.9716874
+Gini:  0.9900613
 
 Confusion Matrix (vertical: actual; across: predicted) for F1-optimal threshold:
-         No  Yes    Error       Rate
-No     8642  148 0.016837  =148/8790
-Yes     142 1017 0.122519  =142/1159
-Totals 8784 1165 0.029149  =290/9949
+         No  Yes    Error        Rate
+No     8700  103 0.011701   =103/8803
+Yes     106 1091 0.088555   =106/1197
+Totals 8806 1194 0.020900  =209/10000
 
 Maximum Metrics: Maximum metrics at their respective thresholds
                         metric threshold       value idx
-1                       max f1  0.422552    0.875215 174
-2                       max f2  0.262859    0.893033 222
-3                 max f0point5  0.617980    0.903652 124
-4                 max accuracy  0.422552    0.970851 174
-5                max precision  0.991451    1.000000   0
-6                   max recall  0.031914    1.000000 338
-7              max specificity  0.991451    1.000000   0
-8             max absolute_mcc  0.422552    0.858717 174
-9   max min_per_class_accuracy  0.215653    0.948009 238
-10 max mean_per_class_accuracy  0.180647    0.949358 252
-11                     max tns  0.991451 8790.000000   0
-12                     max fns  0.991451 1157.000000   0
-13                     max fps  0.000416 8790.000000 399
-14                     max tps  0.031914 1159.000000 338
-15                     max tnr  0.991451    1.000000   0
-16                     max fnr  0.991451    0.998274   0
-17                     max fpr  0.000416    1.000000 399
-18                     max tpr  0.031914    1.000000 338
+1                       max f1  0.424060    0.912589 173
+2                       max f2  0.319633    0.922211 202
+3                 max f0point5  0.572323    0.936852 134
+4                 max accuracy  0.441319    0.979200 168
+5                max precision  0.993213    1.000000   0
+6                   max recall  0.040059    1.000000 324
+7              max specificity  0.993213    1.000000   0
+8             max absolute_mcc  0.424060    0.900721 173
+9   max min_per_class_accuracy  0.241678    0.962406 227
+10 max mean_per_class_accuracy  0.231269    0.963242 231
+11                     max tns  0.993213 8803.000000   0
+12                     max fns  0.993213 1194.000000   0
+13                     max fps  0.000338 8803.000000 399
+14                     max tps  0.040059 1197.000000 324
+15                     max tnr  0.993213    1.000000   0
+16                     max fnr  0.993213    0.997494   0
+17                     max fpr  0.000338    1.000000 399
+18                     max tpr  0.040059    1.000000 324
 
 Gains/Lift Table: Extract with `h2o.gainsLift(&lt;model&gt;, &lt;data&gt;)` or `h2o.gainsLift(&lt;model&gt;, valid=&lt;T/F&gt;, xval=&lt;T/F&gt;)`
 H2OBinomialMetrics: stackedensemble
 ** Reported on validation data. **
 
-MSE:  0.04460969
-RMSE:  0.2112101
-LogLoss:  0.1505602
-Mean Per-Class Error:  0.1424718
-AUC:  0.9603354
-AUCPR:  0.7811182
-Gini:  0.9206708
+MSE:  0.04593089
+RMSE:  0.2143149
+LogLoss:  0.1549916
+Mean Per-Class Error:  0.152176
+AUC:  0.9575806
+AUCPR:  0.7697308
+Gini:  0.9151613
 
 Confusion Matrix (vertical: actual; across: predicted) for F1-optimal threshold:
          No Yes    Error       Rate
-No     2032  97 0.045561   =97/2129
-Yes      62 197 0.239382    =62/259
-Totals 2094 294 0.066583  =159/2388
+No     2040  89 0.041804   =89/2129
+Yes      68 191 0.262548    =68/259
+Totals 2108 280 0.065745  =157/2388
 
 Maximum Metrics: Maximum metrics at their respective thresholds
                         metric threshold       value idx
-1                       max f1  0.365780    0.712477 168
-2                       max f2  0.165055    0.795377 240
-3                 max f0point5  0.626247    0.752742 100
-4                 max accuracy  0.626247    0.940117 100
-5                max precision  0.973763    1.000000   0
-6                   max recall  0.014714    1.000000 360
-7              max specificity  0.973763    1.000000   0
-8             max absolute_mcc  0.271552    0.680105 199
-9   max min_per_class_accuracy  0.165055    0.903475 240
-10 max mean_per_class_accuracy  0.165055    0.904532 240
-11                     max tns  0.973763 2129.000000   0
-12                     max fns  0.973763  257.000000   0
-13                     max fps  0.000192 2129.000000 399
-14                     max tps  0.014714  259.000000 360
-15                     max tnr  0.973763    1.000000   0
-16                     max fnr  0.973763    0.992278   0
-17                     max fpr  0.000192    1.000000 399
-18                     max tpr  0.014714    1.000000 360
+1                       max f1  0.396232    0.708720 160
+2                       max f2  0.166073    0.776732 240
+3                 max f0point5  0.686776    0.744337  91
+4                 max accuracy  0.522239    0.939698 132
+5                max precision  0.987921    1.000000   0
+6                   max recall  0.013005    1.000000 361
+7              max specificity  0.987921    1.000000   0
+8             max absolute_mcc  0.522239    0.675954 132
+9   max min_per_class_accuracy  0.166073    0.891892 240
+10 max mean_per_class_accuracy  0.132816    0.897120 254
+11                     max tns  0.987921 2129.000000   0
+12                     max fns  0.987921  258.000000   0
+13                     max fps  0.000173 2129.000000 399
+14                     max tps  0.013005  259.000000 361
+15                     max tnr  0.987921    1.000000   0
+16                     max fnr  0.987921    0.996139   0
+17                     max fpr  0.000173    1.000000 399
+18                     max tpr  0.013005    1.000000 361
 
 Gains/Lift Table: Extract with `h2o.gainsLift(&lt;model&gt;, &lt;data&gt;)` or `h2o.gainsLift(&lt;model&gt;, valid=&lt;T/F&gt;, xval=&lt;T/F&gt;)`
 H2OBinomialMetrics: stackedensemble
 ** Reported on cross-validation data. **
 ** 5-fold cross-validation on training data (Metrics computed for combined holdout predictions) **
 
-MSE:  0.05051532
-RMSE:  0.2247561
-LogLoss:  0.1712053
-Mean Per-Class Error:  0.1406656
-AUC:  0.9512413
-AUCPR:  0.7488303
-Gini:  0.9024825
+MSE:  0.05090027
+RMSE:  0.2256109
+LogLoss:  0.1725378
+Mean Per-Class Error:  0.1609015
+AUC:  0.9499098
+AUCPR:  0.7460786
+Gini:  0.8998197
 
 Confusion Matrix (vertical: actual; across: predicted) for F1-optimal threshold:
           No  Yes    Error         Rate
-No     11482  671 0.055213   =671/12153
-Yes      374 1280 0.226119    =374/1654
-Totals 11856 1951 0.075686  =1045/13807
+No     11600  553 0.045503   =553/12153
+Yes      457 1197 0.276300    =457/1654
+Totals 12057 1750 0.073151  =1010/13807
 
 Maximum Metrics: Maximum metrics at their respective thresholds
                         metric threshold        value idx
-1                       max f1  0.294349     0.710125 219
-2                       max f2  0.099855     0.774582 298
-3                 max f0point5  0.580956     0.740056 132
-4                 max accuracy  0.520655     0.931991 150
-5                max precision  0.990710     1.000000   0
-6                   max recall  0.000569     1.000000 399
-7              max specificity  0.990710     1.000000   0
-8             max absolute_mcc  0.294349     0.669947 219
-9   max min_per_class_accuracy  0.115929     0.885127 289
-10 max mean_per_class_accuracy  0.099855     0.888368 298
-11                     max tns  0.990710 12153.000000   0
-12                     max fns  0.990710  1651.000000   0
-13                     max fps  0.000569 12153.000000 399
-14                     max tps  0.000569  1654.000000 399
-15                     max tnr  0.990710     1.000000   0
-16                     max fnr  0.990710     0.998186   0
-17                     max fpr  0.000569     1.000000 399
-18                     max tpr  0.000569     1.000000 399
+1                       max f1  0.350194     0.703290 201
+2                       max f2  0.164018     0.777717 265
+3                 max f0point5  0.562723     0.738517 137
+4                 max accuracy  0.540548     0.932498 144
+5                max precision  0.988893     1.000000   0
+6                   max recall  0.000456     1.000000 399
+7              max specificity  0.988893     1.000000   0
+8             max absolute_mcc  0.411648     0.662743 183
+9   max min_per_class_accuracy  0.114396     0.883979 286
+10 max mean_per_class_accuracy  0.105893     0.886304 290
+11                     max tns  0.988893 12153.000000   0
+12                     max fns  0.988893  1650.000000   0
+13                     max fps  0.000456 12153.000000 399
+14                     max tps  0.000456  1654.000000 399
+15                     max tnr  0.988893     1.000000   0
+16                     max fnr  0.988893     0.997582   0
+17                     max fpr  0.000456     1.000000 399
+18                     max tpr  0.000456     1.000000 399
 
 Gains/Lift Table: Extract with `h2o.gainsLift(&lt;model&gt;, &lt;data&gt;)` or `h2o.gainsLift(&lt;model&gt;, valid=&lt;T/F&gt;, xval=&lt;T/F&gt;)`
 Cross-Validation Metrics Summary: 
                 mean        sd cv_1_valid cv_2_valid cv_3_valid cv_4_valid
-accuracy    0.928305  0.007256   0.939850   0.929517   0.924751   0.926934
-auc         0.951701  0.005000   0.952292   0.956566   0.956173   0.944906
-err         0.071695  0.007256   0.060150   0.070483   0.075249   0.073066
-err_count 197.800000 18.005554 168.000000 197.000000 204.000000 204.000000
-f0point5    0.697153  0.039922   0.760870   0.698782   0.697976   0.671902
+accuracy    0.928743  0.007437   0.936990   0.918571   0.934186   0.929623
+auc         0.950190  0.002653   0.954707   0.950147   0.948655   0.949449
+err         0.071257  0.007437   0.063010   0.081429   0.065814   0.070377
+err_count 197.000000 23.323807 170.000000 228.000000 180.000000 196.000000
+f0point5    0.700801  0.027873   0.722807   0.659824   0.730230   0.692137
           cv_5_valid
-accuracy    0.920471
-auc         0.948565
-err         0.079529
-err_count 216.000000
-f0point5    0.656234
+accuracy    0.924346
+auc         0.947989
+err         0.075654
+err_count 211.000000
+f0point5    0.699009
 
 ---
                         mean        sd cv_1_valid cv_2_valid cv_3_valid
-precision           0.685291  0.057626   0.780405   0.680412   0.681013
-r2                  0.520771  0.022106   0.544114   0.538521   0.525494
-recall              0.758704  0.046514   0.691617   0.783383   0.775216
-residual_deviance 942.443100 17.285223 925.780700 923.117800 952.937300
-rmse                0.224672  0.004587   0.219083   0.221208   0.230133
-specificity         0.951331  0.013934   0.973567   0.949553   0.946700
-                  cv_4_valid cv_5_valid
-precision           0.658120   0.626506
-r2                  0.494483   0.501244
-recall              0.733333   0.809969
-residual_deviance 962.569760 947.809800
-rmse                0.224942   0.227992
-specificity         0.951554   0.935282</code></pre>
+precision           0.693693  0.043396   0.733096   0.633803   0.738710
+r2                  0.517460  0.006031   0.518965   0.506979   0.518830
+recall              0.737920  0.045015   0.684385   0.789474   0.698171
+residual_deviance 952.444000 54.130043 870.332340 988.683350 946.922700
+rmse                0.225448  0.005405   0.218355   0.229921   0.225355
+specificity         0.954526  0.013208   0.968711   0.936534   0.966348
+                  cv_4_valid  cv_5_valid
+precision           0.675676    0.687180
+r2                  0.522391    0.520138
+recall              0.766871    0.750700
+residual_deviance 944.129760 1012.151800
+rmse                0.222177    0.231433
+specificity         0.951200    0.949836</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(automl_models_h2o<span class="sc">@</span>leader)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "S4"</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="Chapter_3b-_and_4_Challenge_fahad_cache/html/unnamed-chunk-8_0b806c83667d38f763f024e084be3cd1">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">h2o.predict</span>(automl_models_h2o<span class="sc">@</span>leader, <span class="at">newdata =</span> <span class="fu">as.h2o</span>(test_tbl))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -676,39 +661,39 @@ specificity         0.951554   0.935282</code></pre>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as_tibble</span>()</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co">#h2o.saveModel(automl_models_h2o@leader, path = "./04_perf_meas_files/")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="Chapter_3b-_and_4_Challenge_fahad_cache/html/unnamed-chunk-9_4b2c9b11aeeb663884dab9953ae2b7ce">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>predictions_tbl <span class="sc">%&gt;%</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 2,858
 Columns: 3
-$ predict &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, No, No, Yes, Yes, Yes, Yes, No, …
-$ No      &lt;dbl&gt; 0.30736370, 0.50370304, 0.06602003, 0.16403161, 0.04737343, 0.…
-$ Yes     &lt;dbl&gt; 0.69263630, 0.49629696, 0.93397997, 0.83596839, 0.95262657, 0.…</code></pre>
+$ predict &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, No, No, Yes, Yes, Yes, Yes, Yes,…
+$ No      &lt;dbl&gt; 0.35334247, 0.36027327, 0.16122040, 0.18614910, 0.15906951, 0.…
+$ Yes     &lt;dbl&gt; 0.64665753, 0.63972673, 0.83877960, 0.81385090, 0.84093049, 0.…</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="Chapter_3b-_and_4_Challenge_fahad_cache/html/unnamed-chunk-10_f192aa049491e9f2dcc826d0ef20b8ee">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>automl_models_h2o<span class="sc">@</span>leaderboard <span class="sc">%&gt;%</span> </span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>              <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>              <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(mean_per_class_error, rmse, mse))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 29 × 4
+<pre><code># A tibble: 23 × 4
    model_id                                                  auc logloss aucpr
    &lt;chr&gt;                                                   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
- 1 StackedEnsemble_AllModels_3_AutoML_1_20240625_232705    0.955   0.173 0.760
- 2 StackedEnsemble_AllModels_2_AutoML_1_20240625_232705    0.955   0.173 0.760
- 3 StackedEnsemble_BestOfFamily_4_AutoML_1_20240625_232705 0.954   0.174 0.759
- 4 StackedEnsemble_AllModels_1_AutoML_1_20240625_232705    0.954   0.174 0.758
- 5 StackedEnsemble_BestOfFamily_3_AutoML_1_20240625_232705 0.953   0.174 0.756
- 6 StackedEnsemble_BestOfFamily_2_AutoML_1_20240625_232705 0.952   0.176 0.757
- 7 GBM_grid_1_AutoML_1_20240625_232705_model_3             0.952   0.178 0.750
- 8 StackedEnsemble_BestOfFamily_1_AutoML_1_20240625_232705 0.951   0.178 0.751
- 9 GBM_1_AutoML_1_20240625_232705                          0.950   0.179 0.750
-10 GBM_3_AutoML_1_20240625_232705                          0.950   0.181 0.750
-# ℹ 19 more rows</code></pre>
+ 1 StackedEnsemble_BestOfFamily_3_AutoML_1_20240626_112250 0.956   0.172 0.759
+ 2 StackedEnsemble_AllModels_3_AutoML_1_20240626_112250    0.956   0.171 0.767
+ 3 StackedEnsemble_AllModels_2_AutoML_1_20240626_112250    0.956   0.171 0.766
+ 4 StackedEnsemble_AllModels_1_AutoML_1_20240626_112250    0.954   0.174 0.759
+ 5 StackedEnsemble_BestOfFamily_2_AutoML_1_20240626_112250 0.953   0.176 0.746
+ 6 GBM_4_AutoML_1_20240626_112250                          0.952   0.179 0.741
+ 7 GBM_grid_1_AutoML_1_20240626_112250_model_1             0.951   0.178 0.744
+ 8 GBM_grid_1_AutoML_1_20240626_112250_model_2             0.951   0.179 0.755
+ 9 GBM_1_AutoML_1_20240626_112250                          0.950   0.179 0.753
+10 StackedEnsemble_BestOfFamily_1_AutoML_1_20240626_112250 0.950   0.179 0.753
+# ℹ 13 more rows</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="Chapter_3b-_and_4_Challenge_fahad_cache/html/unnamed-chunk-11_e7bcf14327fa135c5f55a855b0e7d63f">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>plot_h2o_leaderboard <span class="ot">&lt;-</span> <span class="cf">function</span>(h2o_leaderboard, <span class="at">order_by =</span> <span class="fu">c</span>(<span class="st">"auc"</span>, <span class="st">"logloss"</span>), </span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">n_max =</span> <span class="dv">20</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">include_lbl =</span> <span class="cn">TRUE</span>) {</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -773,10 +758,10 @@ $ Yes     &lt;dbl&gt; 0.69263630, 0.49629696, 0.93397997, 0.83596839, 0.95262657
 <span id="cb32-62"><a href="#cb32-62" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-63"><a href="#cb32-63" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="Chapter_3b-_and_4_Challenge_fahad_cache/html/unnamed-chunk-12_3630dea32c1883d024222db1ede8476e">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>automl_models_h2o<span class="sc">@</span>leaderboard <span class="sc">%&gt;%</span> <span class="fu">plot_h2o_leaderboard</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure class="figure">
 <p><a href="Chapter_3b-_and_4_Challenge_fahad_files/figure-html/unnamed-chunk-12-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="Chapter_3b-_and_4_Challenge_fahad_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
@@ -784,7 +769,7 @@ $ Yes     &lt;dbl&gt; 0.69263630, 0.49629696, 0.93397997, 0.83596839, 0.95262657
 </div>
 </div>
 <p>I was unable to build the page because the program have some problem with an h2o function. So I saved the results and loaded them. The used code is commented out for a better understanding.</p>
-<div class="cell" data-hash="Chapter_3b-_and_4_Challenge_fahad_cache/html/unnamed-chunk-13_3607793476fd0f32091c2ee5897b309e">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#h2o.init()</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co">#deeplearning_h2o &lt;- </span></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co">#h2o.loadModel("C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Business Decisions with Machine Learning/DeepLearning_1_AutoML_3_20220614_234925")</span></span>
@@ -816,7 +801,7 @@ $ Yes     &lt;dbl&gt; 0.69263630, 0.49629696, 0.93397997, 0.83596839, 0.95262657
 <span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a><span class="co">#     )</span></span>
 <span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="Chapter_3b-_and_4_Challenge_fahad_cache/html/unnamed-chunk-14_2effd82a6aff49c3f46d3d6f0ed35e3e">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &lt;- h2o.getModel("Deaplearning_grid_01_model_3")</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Deeplearning_grid_01_model_3 %&gt;%h2o.saveModel(path = "04_Modeling/Deaplearning_grid_01_model_3")</span></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Deeplearning_grid_01_model_3 &lt;- h2o.loadModel("04_Modeling/Deaplearning_grid_01_model_3/Deaplearning_grid_01_model_3")</span></span>
@@ -836,7 +821,7 @@ $ Yes     &lt;dbl&gt; 0.69263630, 0.49629696, 0.93397997, 0.83596839, 0.95262657
 <span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a><span class="co">#performance_tbl &lt;- readRDS("performance_tbl.rds")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="Chapter_3b-_and_4_Challenge_fahad_cache/html/unnamed-chunk-15_c5aa7432b7167077d6486ff6b41ffde8">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#performance_tbl %&gt;%</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">#filter(f1 == max(f1))</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -851,14 +836,14 @@ $ Yes     &lt;dbl&gt; 0.69263630, 0.49629696, 0.93397997, 0.83596839, 0.95262657
 <span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">#theme_new</span></span>
 <span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"E:/Fahad/bdml-injolifi/04_perf_meas_files/figure-html/unnamed-chunk-15-1.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure class="figure">
 <p><a href="E:/Fahad/bdml-injolifi/04_perf_meas_files/figure-html/unnamed-chunk-15-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="E:/Fahad/bdml-injolifi/04_perf_meas_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="Chapter_3b-_and_4_Challenge_fahad_cache/html/unnamed-chunk-16_fbbc1f01c53cbe43f549c76c508337cf">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#p1 &lt;- performance_tbl %&gt;%</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#ggplot(aes(fpr, tpr)) +</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#geom_line(size = 1) +</span></span>
@@ -877,14 +862,14 @@ $ Yes     &lt;dbl&gt; 0.69263630, 0.49629696, 0.93397997, 0.83596839, 0.95262657
 <span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="co">#p1</span></span>
 <span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"E:/Fahad/bdml-injolifi/04_perf_meas_files/figure-html/unnamed-chunk-16-1.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure class="figure">
 <p><a href="E:/Fahad/bdml-injolifi/04_perf_meas_files/figure-html/unnamed-chunk-16-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="E:/Fahad/bdml-injolifi/04_perf_meas_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="Chapter_3b-_and_4_Challenge_fahad_cache/html/unnamed-chunk-17_6d24d9b12f83548be34ea3f11db3593b">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#p2 &lt;- performance_tbl %&gt;%</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#ggplot(aes(recall, precision)) +</span></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#geom_line(size = 1) +</span></span>
@@ -899,14 +884,14 @@ $ Yes     &lt;dbl&gt; 0.69263630, 0.49629696, 0.93397997, 0.83596839, 0.95262657
 <span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="co">#p2</span></span>
 <span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"E:/Fahad/bdml-injolifi/04_perf_meas_files/figure-html/unnamed-chunk-17-1.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure class="figure">
 <p><a href="E:/Fahad/bdml-injolifi/04_perf_meas_files/figure-html/unnamed-chunk-17-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="E:/Fahad/bdml-injolifi/04_perf_meas_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="Chapter_3b-_and_4_Challenge_fahad_cache/html/unnamed-chunk-18_39e9450d8ce5889d8d1996fbc58c22c7">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>ranked_predictions_tbl <span class="ot">&lt;-</span> predictions_tbl <span class="sc">%&gt;%</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bind_cols</span>(test_tbl) <span class="sc">%&gt;%</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(predict<span class="sc">:</span>Yes, went_on_backorder) <span class="sc">%&gt;%</span></span>
@@ -937,7 +922,7 @@ $ Yes     &lt;dbl&gt; 0.69263630, 0.49629696, 0.93397997, 0.83596839, 0.95262657
 <span id="cb39-28"><a href="#cb39-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">lift_baseline        =</span> gain_baseline <span class="sc">/</span> cumulative_pct_cases</span>
 <span id="cb39-29"><a href="#cb39-29" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="Chapter_3b-_and_4_Challenge_fahad_cache/html/unnamed-chunk-19_15126cb9d7c59815119cbda0d3fba97d">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#gain_lift_tbl &lt;- performance_h2o %&gt;%</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">#h2o.gainsLift() %&gt;%</span></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#as.tibble()</span></span>
@@ -962,14 +947,14 @@ $ Yes     &lt;dbl&gt; 0.69263630, 0.49629696, 0.93397997, 0.83596839, 0.95262657
 <span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="co">#p3</span></span>
 <span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"E:/Fahad/bdml-injolifi/04_perf_meas_files/figure-html/unnamed-chunk-19-1.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure class="figure">
 <p><a href="E:/Fahad/bdml-injolifi/04_perf_meas_files/figure-html/unnamed-chunk-19-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="E:/Fahad/bdml-injolifi/04_perf_meas_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="Chapter_3b-_and_4_Challenge_fahad_cache/html/unnamed-chunk-20_b5e584926d06f89442a33cd03c94041c">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#lift_transformed_tbl &lt;- gain_lift_tbl %&gt;% </span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co">#    select(group, cumulative_data_fraction, cumulative_capture_rate, cumulative_lift) %&gt;%</span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co">#    select(-contains("capture")) %&gt;%</span></span>
@@ -989,18 +974,18 @@ $ Yes     &lt;dbl&gt; 0.69263630, 0.49629696, 0.93397997, 0.83596839, 0.95262657
 <span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a><span class="co">#p4</span></span>
 <span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"E:/Fahad/bdml-injolifi/04_perf_meas_files/figure-html/unnamed-chunk-20-1.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure class="figure">
 <p><a href="E:/Fahad/bdml-injolifi/04_perf_meas_files/figure-html/unnamed-chunk-20-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="E:/Fahad/bdml-injolifi/04_perf_meas_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="Chapter_3b-_and_4_Challenge_fahad_cache/html/unnamed-chunk-21_5f59413fe6d429871a5c7fa6fe93d3bf">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="Chapter_3b-_and_4_Challenge_fahad_cache/html/unnamed-chunk-22_c758a7cfbf3c92df334cc0cbb17be718">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine using cowplot</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>   <span class="co"># </span></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co">#    # cowplot::get_legend extracts a legend from a ggplot object</span></span>
@@ -1013,7 +998,7 @@ $ Yes     &lt;dbl&gt; 0.69263630, 0.49629696, 0.93397997, 0.83596839, 0.95262657
 <span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a> <span class="co">#   p</span></span>
 <span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"E:/Fahad/bdml-injolifi/04_perf_meas_files/figure-html/unnamed-chunk-21-1.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure class="figure">
 <p><a href="E:/Fahad/bdml-injolifi/04_perf_meas_files/figure-html/unnamed-chunk-21-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="E:/Fahad/bdml-injolifi/04_perf_meas_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
@@ -1065,6 +1050,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -1133,13 +1145,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'alternate';
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1166,12 +1180,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
     }
-  });
-  clipboard.on('success', function(e) {
+    return false;
+  }
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1203,11 +1220,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1217,8 +1273,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1230,9 +1295,245 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1273,7 +1574,39 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","loop":true,"descPosition":"bottom","openEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":false,"closeEffect":"zoom"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
 
 
 

@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.5.47">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2024-05-30">
 
-<title>MyLabJournal - Challenge 1 - Data Science Fundamentals</title>
+<title>Challenge 1 - Data Science Fundamentals – MyLabJournal</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -18,11 +18,12 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -47,43 +48,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -115,7 +86,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -124,12 +101,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -137,59 +144,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">MyLabJournal</span>
     </a>
   </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Journal</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">    
         <li>
-    <a class="dropdown-item" href="./content/01_journal/01_tidyverse.html">
- <span class="dropdown-text">01 Tidyverse</span></a>
+    <a class="dropdown-item" href="C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Chapter_1_Challenge_fahad.qmd">
+ <span class="dropdown-text">Challenge 1 Fundamentals of Machine Learning</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./content/01_journal/02_data_acquisition.html">
- <span class="dropdown-text">02 Data Acquisition</span></a>
+    <a class="dropdown-item" href="C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Chapter_2_Challenge-Fahad.qmd">
+ <span class="dropdown-text">Challenge 2 Supervised ML</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./content/01_journal/03_data_wrangling.html">
- <span class="dropdown-text">03 Data Wrangling</span></a>
+    <a class="dropdown-item" href="C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Chapter_3_Challenge_fahad.qmd">
+ <span class="dropdown-text">Challenge 3 Automated Machine Learning with H2O (I)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./content/01_journal/04_data_visualization.html">
- <span class="dropdown-text">04 Data Visualization</span></a>
+    <a class="dropdown-item" href="C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Chapter_3b _and_4_Challenge_fahad.qmd">
+ <span class="dropdown-text">Challenge 3b and 4 Automated Machine Learning with H2O (II) and Precision Measuring</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/05_lime.qmd">
+ <span class="dropdown-text">Challenge 5 Lime</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./content/02_notes/05_class_notes.html">
- <span class="menu-text">Class notes</span></a>
+    <a class="nav-link" href="./content/02_notes/05_class_notes.html"> 
+<span class="menu-text">Class notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./content/03_other/06_links.html">
- <span class="menu-text">Links</span></a>
+    <a class="nav-link" href="./content/03_other/06_links.html"> 
+<span class="menu-text">Links</span></a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
-                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-              </div>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -222,7 +233,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
   
 
+
 </header>
+
 
 <section id="challenge-summary" class="level1">
 <h1>Challenge Summary</h1>
@@ -243,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="libraries" class="level1">
 <h1>Libraries</h1>
 <p>Load the following libraries.</p>
-<div class="cell" data-hash="Chapter_1_Challenge_fahad_cache/html/unnamed-chunk-1_fe2645386b80583ce743d7ad538f9bea">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("plotly")</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -261,7 +274,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>date</code>: The timestamp relating the symbol to the share price at that point in time</li>
 <li><code>adjusted</code>: The stock price, adjusted for any splits and dividends (we use this when analyzing stock data over long periods of time)</li>
 </ul>
-<div class="cell" data-hash="Chapter_1_Challenge_fahad_cache/html/unnamed-chunk-2_e624ac0b7e16c10264c1f7013f163de0">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># STOCK PRICES</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sp_500_prices_tbl <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Business Decisions with Machine Learning/sp_500_prices_tbl.rds"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>sp_500_prices_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -287,7 +300,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>company</code>: The company name</li>
 <li><code>sector</code>: The sector that the company belongs to</li>
 </ul>
-<div class="cell" data-hash="Chapter_1_Challenge_fahad_cache/html/unnamed-chunk-3_2a393f88dbff156b92a23761c11c5cf3">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SECTOR INFORMATION</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sp_500_index_tbl <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Business Decisions with Machine Learning/sp_500_index_tbl.rds"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>sp_500_index_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1323,7 +1336,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 return_{daily} = \frac{price_{i}-price_{i-1}}{price_{i-1}}
 \]</span></p>
 <p>First, what do we have? We have stock prices for every stock in the <a href="https://finance.yahoo.com/quote/%5EGSPC?p=%5EGSPC">SP 500 Index</a>, which is the daily stock prices for over 500 stocks. The data set is over 1.2M observations.</p>
-<div class="cell" data-hash="Chapter_1_Challenge_fahad_cache/html/unnamed-chunk-4_b54985ca245bb34b5b8b4beee2e7033b">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sp_500_prices_tbl <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,225,765
@@ -1349,7 +1362,7 @@ $ adjusted &lt;dbl&gt; 15.86624, 16.01451, 16.20183, 15.22628, 15.70234, 15.2340
 <li>Return only the <code>symbol</code>, <code>date</code>, and <code>pct_return</code> columns</li>
 <li>Save as a variable named <code>sp_500_daily_returns_tbl</code></li>
 </ul>
-<div class="cell" data-hash="Chapter_1_Challenge_fahad_cache/html/unnamed-chunk-5_ce1215048a3a9d3b6d4c9f7c360cc249">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply your data transformation skills!</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sp_500_daily_returns_tbl <span class="ot">&lt;-</span> sp_500_prices_tbl <span class="sc">%&gt;%</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(symbol, date, adjusted) <span class="sc">%&gt;%</span></span>
@@ -1369,7 +1382,7 @@ $ adjusted &lt;dbl&gt; 15.86624, 16.01451, 16.20183, 15.22628, 15.70234, 15.2340
 <h2 class="anchored" data-anchor-id="step-2---convert-to-user-item-format">Step 2 - Convert to User-Item Format</h2>
 <p>The next step is to convert to a user-item format with the <code>symbol</code> in the first column and every other column the value of the <em>daily returns</em> (<code>pct_return</code>) for every stock at each <code>date</code>.</p>
 <p>We’re going to import the correct results first (just in case you were not able to complete the last step).</p>
-<div class="cell" data-hash="Chapter_1_Challenge_fahad_cache/html/unnamed-chunk-6_5c147653b1a8e4bd5463fcd29171ec9e">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sp_500_daily_returns_tbl <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Business Decisions with Machine Learning/sp_500_daily_returns_tbl.rds"</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>sp_500_daily_returns_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1394,7 +1407,7 @@ $ adjusted &lt;dbl&gt; 15.86624, 16.01451, 16.20183, 15.22628, 15.70234, 15.2340
 <li>Spread the <code>date</code> column to get the values as percentage returns. Make sure to fill an <code>NA</code> values with zeros.</li>
 <li>Save the result as <code>stock_date_matrix_tbl</code></li>
 </ul>
-<div class="cell" data-hash="Chapter_1_Challenge_fahad_cache/html/unnamed-chunk-7_6e16cc4ee1e1e91c68f26330f30387d8">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to User-Item Format</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>stock_date_matrix_tbl <span class="ot">&lt;-</span> sp_500_daily_returns_tbl <span class="sc">%&gt;%</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(symbol) <span class="sc">%&gt;%</span></span>
@@ -1430,7 +1443,7 @@ $ adjusted &lt;dbl&gt; 15.86624, 16.01451, 16.20183, 15.22628, 15.70234, 15.2340
 <h2 class="anchored" data-anchor-id="step-3---perform-k-means-clustering">Step 3 - Perform K-Means Clustering</h2>
 <p>Next, we’ll perform <strong>K-Means clustering</strong>.</p>
 <p>We’re going to import the correct results first (just in case you were not able to complete the last step).</p>
-<div class="cell" data-hash="Chapter_1_Challenge_fahad_cache/html/unnamed-chunk-8_a71f6a44a439840ecfe3f42638bc0a87">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>stock_date_matrix_tbl <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Business Decisions with Machine Learning/stock_date_matrix_tbl.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Beginning with the <code>stock_date_matrix_tbl</code>, perform the following operations:</p>
@@ -1439,14 +1452,14 @@ $ adjusted &lt;dbl&gt; 15.86624, 16.01451, 16.20183, 15.22628, 15.70234, 15.2340
 <li>Perform <code>kmeans()</code> with <code>centers = 4</code> and <code>nstart = 20</code></li>
 <li>Save the result as <code>kmeans_obj</code></li>
 </ul>
-<div class="cell" data-hash="Chapter_1_Challenge_fahad_cache/html/unnamed-chunk-9_ea4e43dcf7e53d653ab4ee21d9e51905">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create kmeans_obj for 4 centers</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>kmeans_obj <span class="ot">&lt;-</span> stock_date_matrix_tbl <span class="sc">%&gt;%</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>symbol) <span class="sc">%&gt;%</span></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kmeans</span>(<span class="at">centers =</span> <span class="dv">4</span>, <span class="at">nstart =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Use <code>glance()</code> to get the <code>tot.withinss</code>.</p>
-<div class="cell" data-hash="Chapter_1_Challenge_fahad_cache/html/unnamed-chunk-10_35379582bbf2a36f2321072a8b0de2db">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply glance() to get the tot.withinss</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">glance</span>(kmeans_obj)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1461,7 +1474,7 @@ $ adjusted &lt;dbl&gt; 15.86624, 16.01451, 16.20183, 15.22628, 15.70234, 15.2340
 <h2 class="anchored" data-anchor-id="step-4---find-the-optimal-value-of-k">Step 4 - Find the optimal value of K</h2>
 <p>Now that we are familiar with the process for calculating <code>kmeans()</code>, let’s use <code>purrr</code> to iterate over many values of “k” using the <code>centers</code> argument.</p>
 <p>We’ll use this <strong>custom function</strong> called <code>kmeans_mapper()</code>:</p>
-<div class="cell" data-hash="Chapter_1_Challenge_fahad_cache/html/unnamed-chunk-11_52735e48ce584b21a9aa79926587ee9d">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>kmeans_mapper <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">center =</span> <span class="dv">3</span>) {</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    stock_date_matrix_tbl <span class="sc">%&gt;%</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(<span class="sc">-</span>symbol) <span class="sc">%&gt;%</span></span>
@@ -1475,7 +1488,7 @@ $ adjusted &lt;dbl&gt; 15.86624, 16.01451, 16.20183, 15.22628, 15.70234, 15.2340
 <li>Add a column named <code>glance</code> with the <code>glance()</code> output. Use <code>mutate()</code> and <code>map()</code> again to iterate over the column of <code>k_means</code>.</li>
 <li>Save the output as <code>k_means_mapped_tbl</code></li>
 </ul>
-<div class="cell" data-hash="Chapter_1_Challenge_fahad_cache/html/unnamed-chunk-12_351b9f9f45107161fdb5c472349660dc">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use purrr to map</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>kmeans_mapped_tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">centers =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">k_means =</span> centers <span class="sc">%&gt;%</span> <span class="fu">map</span>(kmeans_mapper)) <span class="sc">%&gt;%</span></span>
@@ -1490,7 +1503,7 @@ $ adjusted &lt;dbl&gt; 15.86624, 16.01451, 16.20183, 15.22628, 15.70234, 15.2340
 <li>Plot the <code>centers</code> column (x-axis) versus the <code>tot.withinss</code> column (y-axis) using <code>geom_point()</code> and <code>geom_line()</code></li>
 <li>Add a title “Scree Plot” and feel free to style it with your favorite theme</li>
 </ul>
-<div class="cell" data-hash="Chapter_1_Challenge_fahad_cache/html/unnamed-chunk-13_5051b91cf77fcd2e117c0df0c1edfc72">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize Scree Plot</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>kmeans_mapped_tbl <span class="sc">%&gt;%</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(glance) <span class="sc">%&gt;%</span></span>
@@ -1500,8 +1513,12 @@ $ adjusted &lt;dbl&gt; 15.86624, 16.01451, 16.20183, 15.22628, 15.70234, 15.2340
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(centers, tot.withinss)) <span class="sc">+</span></span>
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#2DC6D6"</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"#2DC6D6"</span>, <span class="at">size =</span> <span class="dv">1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</code></pre>
+</div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure class="figure">
 <p><a href="Chapter_1_Challenge_fahad_files/figure-html/unnamed-chunk-13-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="Chapter_1_Challenge_fahad_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
@@ -1514,9 +1531,9 @@ $ adjusted &lt;dbl&gt; 15.86624, 16.01451, 16.20183, 15.22628, 15.70234, 15.2340
 <h2 class="anchored" data-anchor-id="step-5---apply-umap">Step 5 - Apply UMAP</h2>
 <p>Next, let’s plot the <code>UMAP</code> 2D visualization to help us investigate cluster assignments.</p>
 <p>We’re going to import the correct results first (just in case you were not able to complete the last step).</p>
-<div class="cell" data-hash="Chapter_1_Challenge_fahad_cache/html/unnamed-chunk-14_4797b83b710eb218c6b370f6fe42b659">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>k_means_mapped_tbl <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Business Decisions with Machine Learning/k_means_mapped_tbl.rds"</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>k_means_mapped_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>k_means_mapped_tbl <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Business Decisions with Machine Learning/k_means_mapped_tbl.rds"</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>k_means_mapped_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 3
    centers k_means  glance          
@@ -1540,12 +1557,12 @@ $ adjusted &lt;dbl&gt; 15.86624, 16.01451, 16.20183, 15.22628, 15.70234, 15.2340
 <li>De-select the <code>symbol</code> column</li>
 <li>Use the <code>umap()</code> function storing the output as <code>umap_results</code></li>
 </ul>
-<div class="cell" data-hash="Chapter_1_Challenge_fahad_cache/html/unnamed-chunk-15_28b262a87eff419f8b1d701589b63ab3">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply UMAP</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>umap_results <span class="ot">&lt;-</span> stock_date_matrix_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>symbol) <span class="sc">%&gt;%</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">umap</span>()</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Store results as: umap_results </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply UMAP</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>umap_results <span class="ot">&lt;-</span> stock_date_matrix_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>symbol) <span class="sc">%&gt;%</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">umap</span>()</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Store results as: umap_results </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next, we want to combine the <code>layout</code> from the <code>umap_results</code> with the <code>symbol</code> column from the <code>stock_date_matrix_tbl</code>.</p>
 <ul>
@@ -1554,519 +1571,523 @@ $ adjusted &lt;dbl&gt; 15.86624, 16.01451, 16.20183, 15.22628, 15.70234, 15.2340
 <li>Bind the columns of the umap tibble with the <code>symbol</code> column from the <code>stock_date_matrix_tbl</code>.</li>
 <li>Save the results as <code>umap_results_tbl</code>.</li>
 </ul>
-<div class="cell" data-hash="Chapter_1_Challenge_fahad_cache/html/unnamed-chunk-16_9572cbd46a926ef0c2e3f43a2c2d00f3">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert umap results to tibble with symbols</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>umap_results_tbl <span class="ot">&lt;-</span> umap_results<span class="sc">$</span>layout <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(stock_date_matrix_tbl<span class="sc">$</span>symbol)</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>umap_results_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>               V1          V2 stock_date_matrix_tbl$symbol
-1   -0.8950983551  1.62758702                            A
-2    0.5639097664  0.58689220                          AAL
-3    0.2272660665 -0.51968656                          AAP
-4   -2.1735899638  2.37919970                         AAPL
-5   -0.8406398229 -0.13028244                         ABBV
-6   -0.4255808717 -0.97105476                          ABC
-7   -2.4887588000  2.31319932                         ABMD
-8   -1.2237252946  1.20898354                          ABT
-9   -1.5184602617  1.53752624                          ACN
-10  -2.7228290215  2.64755066                         ADBE
-11  -1.0655343114  3.30855142                          ADI
-12  -0.0638029262 -0.84727447                          ADM
-13  -2.0176102684  1.65951621                          ADP
-14  -0.7954293661  1.32641729                          ADS
-15  -2.7637573653  2.55255858                         ADSK
-16   1.9326961315 -5.02738171                          AEE
-17   1.7493296737 -4.98468752                          AEP
-18   2.1040830811 -4.78167073                          AES
-19  -1.2118188407 -1.03874686                          AFL
-20  -1.4505585506 -1.16842981                          AGN
-21  -1.3896149274 -1.38281790                          AIG
-22   4.9821658345 -3.65183375                          AIV
-23  -1.2947092756 -1.32607204                          AIZ
-24  -0.9296202103 -0.71331736                          AJG
-25  -1.9825480494  1.65325287                         AKAM
-26   0.3573329282  2.51094018                          ALB
-27  -2.7327135325  2.59087794                         ALGN
-28   0.4817821229  0.61657724                          ALK
-29  -1.3192257447 -0.84840915                          ALL
-30   0.0814157782  1.43647893                         ALLE
-31  -1.9564391634  2.20554847                         ALXN
-32  -0.9221536908  3.58029763                         AMAT
-33  -2.7744994370  2.56040110                          AMD
-34   0.2586006628  1.92951277                          AME
-35  -1.9228130148 -1.98250754                          AMG
-36  -0.9850238819 -0.21436984                         AMGN
-37  -1.7002766201 -2.25581285                          AMP
-38   4.6582276609 -3.92364682                          AMT
-39  -2.5466834486  2.80756082                         AMZN
-40  -2.6077778776  2.43047915                         ANET
-41  -2.5646078362  2.36940124                         ANSS
-42  -1.6817589672  0.44604516                         ANTM
-43  -1.0864704892 -0.80265553                          AON
-44   0.7861177610  1.40922902                          AOS
-45   4.2483382765  2.35743640                          APA
-46   4.3621613063  2.53688325                          APC
-47  -0.0720907611  1.96752680                          APD
-48  -0.7818445473  1.84538426                          APH
-49   0.0689854642  2.24117467                         APTV
-50   5.0790484280 -3.56011779                          ARE
-51   0.6923346727  1.43046537                         ARNC
-52   1.9127419376 -4.91465757                          ATO
-53  -2.3792224236  2.89861476                         ATVI
-54   4.8292766673 -3.55921363                          AVB
-55  -0.8767582744  1.97544505                         AVGO
-56   0.1062484119  1.78563796                          AVY
-57   1.9453138168 -4.87094289                          AWK
-58  -2.0318301623 -1.67413461                          AXP
-59   0.2494214335 -0.57641350                          AZO
-60  -0.3301772950  1.68133655                           BA
-61  -2.3065492686 -2.06475139                          BAC
-62  -0.9605050591  1.21419767                          BAX
-63  -2.6813932500 -2.30954500                          BBT
-64   0.6684431926 -0.07707123                          BBY
-65  -1.1077508394  1.19740214                          BDX
-66  -1.8990103063 -2.04488828                          BEN
-67  -1.6617087328 -2.40783485                          BHF
-68   4.0125881765  2.24280457                         BHGE
-69  -1.0545053200 -0.16043230                         BIIB
-70  -2.2969999123 -2.41563872                           BK
-71  -1.6392891754  1.82171663                         BKNG
-72  -1.9971976395 -1.96841934                          BLK
-73  -0.8234601401  0.06392157                          BLL
-74  -0.8532026559 -0.04914181                          BMY
-75  -1.8231893153  1.38828833                           BR
-76  -1.0900567032  1.38488962                          BSX
-77   0.0005469726  2.34169595                          BWA
-78   4.8672866149 -3.67443739                          BXP
-79  -2.1403318631 -1.92235316                            C
-80   1.0880002672 -3.16906058                          CAG
-81  -0.4063515173 -0.96625885                          CAH
-82   0.7623609977  2.28139295                          CAT
-83  -1.1144810744 -1.05199731                           CB
-84  -1.5398677260 -0.80847435                         CBOE
-85  -0.1539461388  2.02504180                         CBRE
-86  -0.6230670903 -1.33190535                          CBS
-87   4.4864078296 -4.08881827                          CCI
-88  -2.4171576278  2.22847468                         CDNS
-89   0.2927935478  2.61479516                           CE
-90  -1.0921747254 -0.09302906                         CELG
-91  -1.4064708473  0.45513488                         CERN
-92   0.2325902351  2.92490474                           CF
-93  -2.8000097745 -2.27137355                          CFG
-94   1.5905797489 -3.61634440                          CHD
-95  -0.1316997885  0.94234925                         CHRW
-96  -0.6541533741 -1.52760891                         CHTR
-97  -1.5175579741  0.44949233                           CI
-98  -1.1052249763 -1.09650863                         CINF
-99   1.5235221334 -3.13665627                           CL
-100  1.5899105775 -3.55836181                          CLX
-101 -2.9206799640 -2.36662813                          CMA
-102 -0.5501256956 -1.62218704                        CMCSA
-103 -1.5922092505 -0.80913710                          CME
-104 -0.0356375992 -0.25246383                          CMG
-105  0.6733515057  2.18817248                          CMI
-106  1.9329035053 -4.96981903                          CMS
-107 -1.7517233356  0.67423367                          CNC
-108  1.8068820369 -4.76113771                          CNP
-109 -2.1808292868 -1.68991090                          COF
-110  3.6327216385  2.07428738                          COG
-111 -1.1099730813  1.17099721                          COO
-112  4.2194537829  2.37597839                          COP
-113  0.1694001701 -0.77014910                         COST
-114  0.7394736118 -2.10968320                         COTY
-115  1.1444174754 -3.30170403                          CPB
-116 -0.2510421207  1.46279413                         CPRI
-117 -1.6054762725  1.19423153                         CPRT
-118 -2.7625246000  2.64448939                          CRM
-119 -1.8493042147  2.34537760                         CSCO
-120  0.0976558207  0.89999890                          CSX
-121 -1.1649410681  1.00584471                         CTAS
-122 -0.0425580991 -1.80746941                          CTL
-123 -1.6096566020  1.44680755                         CTSH
-124 -1.0129350159  0.54584440                         CTXS
-125 -0.4865244571 -0.83886240                          CVS
-126  3.9886994886  2.24147539                          CVX
-127  4.3768046998  2.39350241                          CXO
-128  1.6658544629 -5.06469836                            D
-129  0.5987997432  0.52700287                          DAL
-130  0.6753990549  2.22196043                           DE
-131 -2.0262437562 -1.67208486                          DFS
-132  0.8221053586 -0.46022087                           DG
-133 -0.9322330714 -0.46012372                          DGX
-134  1.1245409411  0.69394254                          DHI
-135 -1.2424624036  1.14445859                          DHR
-136 -0.4518147187 -1.35703956                          DIS
-137 -0.6020592607 -1.49195918                        DISCA
-138 -0.6890387516 -1.51501709                        DISCK
-139 -0.4904402879 -1.67671897                         DISH
-140  4.9062960222 -3.61583883                          DLR
-141  0.5088028846 -0.66928897                         DLTR
-142  0.2932639942  1.69335425                          DOV
-143  5.0999689629 -3.65392860                          DRE
-144 -1.2823971064 -0.24921011                          DRI
-145  2.0343608186 -4.99478509                          DTE
-146  1.8011209874 -4.91452659                          DUK
-147 -1.6471311709 -0.14147620                          DVA
-148  4.4993298044  2.55852115                          DVN
-149  0.3881561122  2.64768661                         DWDP
-150 -1.5901687765  1.02890700                          DXC
-151 -2.4444171212  2.79174858                           EA
-152 -0.7287029702  1.18712140                         EBAY
-153 -0.6416117866  0.09689178                          ECL
-154  1.6958553277 -5.06478545                           ED
-155 -0.9656103770 -0.56325918                          EFX
-156  1.7837322380 -5.21940780                          EIX
-157 -1.0930760106  0.61248180                           EL
-158  0.1609570678  2.76147893                          EMN
-159  0.4815962838  1.97255356                          EMR
-160  4.4022531072  2.34824409                          EOG
-161  4.7326829840 -3.58884989                         EQIX
-162  4.7872506198 -3.60280619                          EQR
-163  1.8669747708 -4.92119019                           ES
-164  5.1461924360 -3.44055462                          ESS
-165 -2.5312667783 -2.05763386                         ETFC
-166  0.4134513728  2.02596238                          ETN
-167  1.8728877027 -4.91690877                          ETR
-168  1.7217541217 -4.64601191                         EVRG
-169 -2.4015094764  2.12530581                           EW
-170  1.7636790513 -4.69056316                          EXC
-171  0.0361432115  1.17488149                         EXPD
-172 -1.2950381863  1.67571342                         EXPE
-173  4.9913393200 -3.44787516                          EXR
-174 -1.6364873374 -1.48229123                            F
-175  4.3671490684  2.40210772                         FANG
-176 -0.9512773711  0.51661839                         FAST
-177 -2.5907731528  2.95967632                           FB
-178  0.8911653200  1.06557867                         FBHS
-179  0.5098069981  2.57127230                          FCX
-180 -0.1392888355  0.77752890                          FDX
-181  1.8287404724 -4.96319293                           FE
-182 -1.9695396836  1.69534438                         FFIV
-183 -1.6746783029  1.14460335                          FIS
-184 -1.7281257457  0.89484115                         FISV
-185 -2.9095895398 -2.40954510                         FITB
-186  0.5872173754 -0.03982836                           FL
-187 -0.7440158746  2.17779296                         FLIR
-188  1.0512689267  1.93747575                          FLR
-189  0.2998135065  1.97181096                          FLS
-190 -2.1647138254  1.91793918                          FLT
-191  0.3436305677  2.67482589                          FMC
-192 -0.2806971186 -1.19491576                          FOX
-193 -0.3057232498 -1.06838889                         FOXA
-194 -2.5417711000 -2.02047711                          FRC
-195  5.0048226978 -3.52797084                          FRT
-196  4.2597211972  2.23353766                          FTI
-197 -2.3848590303  2.26544154                         FTNT
-198  0.0231207025  1.88508428                          FTV
-199  1.3508404344  2.53266642                           GD
-200 -1.2497363566 -1.28721083                           GE
-201 -1.2035947077 -0.03168749                         GILD
-202  1.1451313708 -3.29744627                          GIS
-203 -0.0781178821  1.86217773                          GLW
-204 -1.7269915850 -1.57311413                           GM
-205 -2.3977049990  2.80564002                         GOOG
-206 -2.3618112354  2.83113748                        GOOGL
-207  0.2829398219 -0.65111191                          GPC
-208 -2.2281697594  2.08020572                          GPN
-209  0.8306592919 -0.43764283                          GPS
-210 -0.6809905420  0.70674809                         GRMN
-211 -2.3369706550 -1.91159322                           GS
-212  0.1083853148  2.50085253                           GT
-213 -0.9425404174  0.69642135                          GWW
-214  4.1492139942  2.16528913                          HAL
-215 -1.5030291453  0.15960794                          HAS
-216 -3.0021269968 -2.49568544                         HBAN
-217 -2.8166820897 -2.30190251                          HBI
-218 -0.2406788435 -0.07285362                          HCA
-219  5.1596982903 -3.87438361                          HCP
-220  0.6610101993 -0.06971445                           HD
-221  4.4936545081  2.55800649                          HES
-222  3.3648524759  1.93519206                          HFC
-223 -1.3339884928 -1.24803997                          HIG
-224  1.3902365850  2.61108043                          HII
-225 -1.2526566506  1.92062387                          HLT
-226 -1.6237712557 -1.91469099                          HOG
-227 -1.1731449807  1.22278089                         HOLX
-228 -0.3239321253  1.14667597                          HON
-229  4.3078032651  2.30179113                           HP
-230 -1.3993429058  2.57735672                          HPE
-231 -1.3406151246  2.79584372                          HPQ
-232 -0.9271990684  0.13554817                          HRB
-233  1.1139029370 -3.06365412                          HRL
-234  1.2642987616  2.44202061                          HRS
-235 -0.6022384843  0.47888894                         HSIC
-236  4.8332728121 -3.65189708                          HST
-237  1.1181531099 -3.37887233                          HSY
-238 -1.7884102050  0.33652800                          HUM
-239 -1.3142168176  0.79277525                          IBM
-240 -1.6481573818 -0.76963106                          ICE
-241 -2.2016067727  2.48114764                         IDXX
-242  0.6106812089 -2.06697669                          IFF
-243 -2.1568749272  2.46238009                         ILMN
-244 -1.7601072625  2.54321685                         INCY
-245 -1.4899956846  1.21047738                         INFO
-246 -1.2225092357  3.11582667                         INTC
-247 -2.3921800820  2.38133325                         INTU
-248  0.6827014571  2.15484359                           IP
-249 -0.8106496715 -1.24119923                          IPG
-250 -0.6808311925  2.73041932                         IPGP
-251 -1.2772006482  1.49521757                          IQV
-252  0.0701910068  1.58042803                           IR
-253  4.9372143252 -3.75248370                          IRM
-254 -2.7292286487  2.59282769                         ISRG
-255 -1.8539721327  1.14153465                           IT
-256  0.4711418579  1.87958978                          ITW
-257 -1.8925866515 -2.08794587                          IVZ
-258  0.1119531108  0.78896587                         JBHT
-259  0.1122937719  1.08287817                          JCI
-260  0.2968461204  1.49523864                          JEC
-261 -2.1660307904 -1.69714464                          JEF
-262 -1.8614890998  1.00412189                         JKHY
-263 -0.3329498186 -0.22895371                          JNJ
-264 -1.8398764413  1.28251714                         JNPR
-265 -2.1366214321 -1.80788633                          JPM
-266  0.8364865949 -0.41535306                          JWN
-267  1.1944463397 -3.24012448                            K
-268 -3.0210908273 -2.51436401                          KEY
-269 -2.1541549531  1.85932004                         KEYS
-270  1.1222114522 -3.04812405                          KHC
-271  4.9174822890 -3.63795683                          KIM
-272 -0.9319924718  3.59692851                         KLAC
-273  1.6208386981 -3.69945766                          KMB
-274  3.7483457530  2.10761699                          KMI
-275  0.1857335716 -0.03870181                          KMX
-276  1.0127477089 -2.56709342                           KO
-277  0.4171104518 -0.96131076                           KR
-278  0.9064480788 -0.42428685                          KSS
-279  0.1640055972  0.91581228                          KSU
-280 -1.1826612335 -1.47377889                            L
-281  0.8198814406 -0.51911432                           LB
-282  0.8304161344  0.94117942                          LEG
-283  1.1940392881  0.70270098                          LEN
-284 -0.9481971920 -0.52664655                           LH
-285 -0.3581028354  0.39384326                          LIN
-286  0.1452925703  1.47420764                          LKQ
-287  1.2289643824  2.38818824                          LLL
-288 -0.7097685721 -0.14346305                          LLY
-289  1.4169106022  2.57848491                          LMT
-290 -1.6642051652 -2.36010645                          LNC
-291  1.9400751447 -4.83938121                          LNT
-292  0.3547759668  0.14985326                          LOW
-293 -0.9499008146  3.56861983                         LRCX
-294  0.6882689503  0.42391978                          LUV
-295 -0.4250506827 -0.05858569                           LW
-296  0.3448331893  2.82289749                          LYB
-297  0.9654618802 -0.30273874                            M
-298 -2.4488758602  2.55369356                           MA
-299  5.0376018706 -3.73083692                          MAA
-300  4.7000235173 -3.36924214                          MAC
-301 -1.2806214353  1.95068401                          MAR
-302  0.8055260355  1.21638648                          MAS
-303 -2.0892730647  0.70284452                          MAT
-304 -0.9169700409 -0.25836968                          MCD
-305 -1.0094747228  3.38967174                         MCHP
-306 -0.3844133389 -0.89996013                          MCK
-307 -2.2784490710  1.44009772                          MCO
-308  1.0558569026 -2.72339266                         MDLZ
-309 -1.1468159757  0.98374689                          MDT
-310 -1.6077863055 -2.37058351                          MET
-311 -0.3538941224  2.24296162                          MGM
-312  0.8808231999  0.99181518                          MHK
-313  0.9898574524 -2.95947793                          MKC
-314  0.7192940383  1.32175339                          MLM
-315 -0.8131014605 -0.83853395                          MMC
-316  0.2453129191  1.90617877                          MMM
-317 -1.6645721889  0.19115981                         MNST
-318  1.3364319806 -2.68717503                           MO
-319  0.2628324134  2.92118737                          MOS
-320  3.3494280629  1.92959314                          MPC
-321 -0.5935426313 -0.31832597                          MRK
-322  4.2631163737  2.50213142                          MRO
-323 -2.1143174775 -2.05314270                           MS
-324 -2.3149848665  1.68226089                         MSCI
-325 -2.3122827319  2.55653632                         MSFT
-326 -1.9153119224  0.81024548                          MSI
-327 -2.8175501124 -2.32248581                          MTB
-328 -0.9440641490  1.56809299                          MTD
-329 -0.9655288862  3.48733910                           MU
-330 -1.1966338273  3.19075222                         MXIM
-331 -2.1420659456 -1.45262821                          MYL
-332  4.4595168776  2.51051153                          NBL
-333 -1.2052601230  2.03739468                         NCLH
-334 -1.6905384758 -0.82115122                         NDAQ
-335  1.9730853484 -4.78799794                          NEE
-336 -0.3580474441 -0.47596809                          NEM
-337 -2.5476834213  2.73832156                         NFLX
-338  1.7939943792 -4.78768426                           NI
-339 -0.5695438806  1.33144244                          NKE
-340 -1.2349588536  1.73223225                         NKTR
-341 -1.7051242967 -1.34596630                         NLSN
-342  1.3811742108  2.51733075                          NOC
-343  4.3202342976  2.18463226                          NOV
-344  1.9078782385 -4.30607151                          NRG
-345  0.2557001862  1.05716473                          NSC
-346 -2.0192291576  2.48031410                         NTAP
-347 -2.1474107041 -2.21301391                         NTRS
-348  0.1857795278  2.24665680                          NUE
-349 -2.7355197434  2.48053049                         NVDA
-350  0.1464908691  0.43812731                          NWL
-351 -0.7196392095  1.88420140                          NWS
-352 -0.7859355580  1.93568870                         NWSA
-353  5.0580276417 -3.77075598                            O
-354  3.8502141893  2.26157186                          OKE
-355 -0.8487274988 -1.26622609                          OMC
-356 -0.7045220253  1.56774934                         ORCL
-357  0.2902755481 -0.47101438                         ORLY
-358  3.9589498825  2.25206203                          OXY
-359 -1.3552428910  0.49041354                         PAYX
-360 -2.6067420515 -2.07704622                         PBCT
-361  0.7549385842  2.23123636                         PCAR
-362  2.0430132719 -4.81656955                          PEG
-363  1.4601742152 -2.86907375                          PEP
-364 -0.7777841015 -0.14604091                          PFE
-365 -1.6445549767 -2.32143946                          PFG
-366  1.4787090410 -3.05680963                           PG
-367 -1.3855503773 -0.69528761                          PGR
-368  0.7964508912  2.20849270                           PH
-369  1.1623964305  0.68917570                          PHM
-370  0.6234911072  1.90557250                          PKG
-371 -1.1370647192  1.84038687                          PKI
-372  4.9649275810 -3.74977512                          PLD
-373  1.5047606370 -2.77046507                           PM
-374 -2.5612967525 -2.24626862                          PNC
-375  0.7166311906  1.81433855                          PNR
-376  1.9983208717 -4.78872866                          PNW
-377  0.2054440984  2.60852387                          PPG
-378  1.7528916799 -5.18462764                          PPL
-379 -1.3065689785 -1.71085163                         PRGO
-380 -1.6283279572 -2.28049422                          PRU
-381  5.0211541957 -3.46946936                          PSA
-382  3.5770430987  2.06775216                          PSX
-383 -0.2603934817  1.66686972                          PVH
-384  0.3490114860  2.21366734                          PWR
-385  4.3575175352  2.40728357                          PXD
-386 -2.2999299808  2.49711664                         PYPL
-387 -0.2939437165  1.91408358                         QCOM
-388 -1.2042806539  3.26035628                         QRVO
-389 -1.4544458262  2.10684174                          RCL
-390 -1.2424132936 -1.10063588                           RE
-391  4.8132432024 -3.48148402                          REG
-392 -1.3665174424  0.85223805                         REGN
-393 -2.9860870287 -2.42005520                           RF
-394 -1.8901139082  2.05594038                          RHI
-395 -1.4343599107  0.29791896                          RHT
-396 -2.2466055677 -2.16270801                          RJF
-397 -0.3798240690  1.43051090                           RL
-398 -1.3121736211  1.15056122                          RMD
-399  0.4851451534  2.10609642                          ROK
-400 -1.4541482223  0.71212773                          ROL
-401  0.3925232039  1.60178827                          ROP
-402  0.7962345013 -0.40848347                         ROST
-403 -0.6954610469 -0.53894480                          RSG
-404  1.4097818806  2.56495347                          RTN
-405  4.5220232946 -4.05968149                         SBAC
-406 -0.9142304518  0.35335486                         SBUX
-407 -2.2816001663 -2.12256661                         SCHW
-408 -0.8192657869 -0.55033060                          SEE
-409  0.4088489533  1.53186738                          SHW
-410 -2.8428356409 -2.28420735                         SIVB
-411  1.1016904655 -3.26443054                          SJM
-412  4.1079377488  2.16002253                          SLB
-413  4.9300299938 -3.78280697                          SLG
-414 -0.1331578204  1.31602892                          SNA
-415 -2.5155007533  2.14879809                         SNPS
-416  1.7082288835 -4.85595989                           SO
-417  4.8502794527 -3.44282727                          SPG
-418 -2.3074672078  1.49501738                         SPGI
-419  1.8584702662 -4.86436745                          SRE
-420 -3.0646933420 -2.45453678                          STI
-421 -2.2028476606 -2.44547074                          STT
-422 -1.0420015267  2.81220154                          STX
-423 -0.9817982100  0.34745755                          STZ
-424  0.7844699961  1.72246456                          SWK
-425 -1.0915623885  3.36763463                         SWKS
-426 -2.4140090923 -1.85825537                          SYF
-427 -1.5292749198  0.99528112                          SYK
-428 -0.6816661801  1.89923056                         SYMC
-429 -0.3420224209 -0.62852480                          SYY
-430 -0.2361893959 -1.70746140                            T
-431  1.0704639775 -2.82833491                          TAP
-432 -0.1613308527  1.80031253                          TDG
-433 -0.3587399413  2.39265057                          TEL
-434 -1.0040159173  1.38534380                          TFX
-435  0.9331351603 -0.40590005                          TGT
-436 -0.3889148251  1.35821354                          TIF
-437  0.6521625344 -0.28742995                          TJX
-438 -1.5688749028 -1.42770557                          TMK
-439 -0.8747649436  1.61843558                          TMO
-440 -0.3877729083  1.87322283                          TPR
-441 -2.7342452213  2.11167362                         TRIP
-442 -1.8679752879 -1.86583149                         TROW
-443 -1.2069174225 -1.14154500                          TRV
-444  0.5253784741 -0.24394923                         TSCO
-445  1.0149272262 -2.93489062                          TSN
-446 -2.1310090381  1.91217623                          TSS
-447 -2.3828310624  2.95070311                         TTWO
-448 -2.5569915147  2.97845894                         TWTR
-449 -1.1608606206  3.23098516                          TXN
-450  0.6343059148  2.07014927                          TXT
-451 -0.2775930724  0.99034380                           UA
-452 -0.1701439150  0.94713071                          UAA
-453  0.5338369548  0.50326466                          UAL
-454  5.1473766132 -3.47582343                          UDR
-455 -0.2234391663 -0.22847438                          UHS
-456 -0.6108940668  0.00904055                         ULTA
-457 -1.7279360595  0.49590585                          UNH
-458 -1.5882150841 -2.38364312                          UNM
-459  0.1672669356  0.90652203                          UNP
-460 -0.1384505871  0.45713306                          UPS
-461  0.8388980876  2.23516102                          URI
-462 -1.7615622091 -1.38449891                          USB
-463  0.7005136651  1.78593073                          UTX
-464 -2.0448525690  2.28320469                            V
-465 -0.9994829470  1.70048284                          VAR
-466 -0.4001487791  0.99921882                          VFC
-467 -0.7542003061 -1.34360989                         VIAB
-468  3.3718836685  1.95059116                          VLO
-469  0.7020601599  1.35943587                          VMC
-470  4.9000498898 -3.84297307                          VNO
-471 -1.2614420351  0.57502960                         VRSK
-472 -2.1934774790  2.09389763                         VRSN
-473 -1.9653304062  2.18809762                         VRTX
-474  5.3191096990 -3.81472639                          VTR
-475  0.9283564474 -2.45546653                           VZ
-476 -0.8802451482  1.50402668                          WAT
-477 -0.2114960176 -0.95684316                          WBA
-478 -1.8345967219  0.48403027                          WCG
-479 -0.8629925656  2.90908356                          WDC
-480  1.8692054481 -4.81069015                          WEC
-481  5.1942167884 -3.88774902                         WELL
-482 -2.3641590582 -1.78574631                          WFC
-483  0.7694253990  0.95034225                          WHR
-484 -1.0740760396 -0.73403459                         WLTW
-485 -0.4133213451 -0.50041516                           WM
-486  3.8049792289  2.17326085                          WMB
-487  0.3828627941 -0.96521841                          WMT
-488  0.4946053530  1.95954435                          WRK
-489 -0.9730887380  0.31610120                           WU
-490  4.9593354620 -3.86387415                           WY
-491 -0.2846099133  2.50923816                         WYNN
-492  4.4323277090  2.45859587                          XEC
-493  1.7775907270 -4.75542800                          XEL
-494 -1.0738079956  3.34433585                         XLNX
-495  3.8326882667  2.29492413                          XOM
-496 -0.8667839641  0.61139107                         XRAY
-497 -0.2548600028  0.62905103                          XRX
-498  0.3948884531  1.83091597                          XYL
-499 -1.1422708673  0.14442004                          YUM
-500 -1.0060307958  0.87678992                          ZBH
-501 -2.9720142932 -2.44656264                         ZION
-502 -0.9553956063  0.76738181                          ZTS</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert umap results to tibble with symbols</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>umap_results_tbl <span class="ot">&lt;-</span> umap_results<span class="sc">$</span>layout <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(stock_date_matrix_tbl<span class="sc">$</span>symbol)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The `x` argument of `as_tibble.matrix()` must have unique column names if
+`.name_repair` is omitted as of tibble 2.0.0.
+ℹ Using compatibility `.name_repair`.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output: umap_results_tbl</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>umap_results_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              V1           V2 stock_date_matrix_tbl$symbol
+1   -1.073107311  1.926631527                            A
+2    1.324669170  1.598854242                          AAL
+3    0.328246595 -0.347761344                          AAP
+4   -2.196437920  2.551530958                         AAPL
+5   -1.608496148 -0.088849432                         ABBV
+6   -1.052260670 -0.600668455                          ABC
+7   -2.545593145  2.008546553                         ABMD
+8   -1.546202420  1.188429326                          ABT
+9   -1.336934194  1.409834424                          ACN
+10  -2.690776164  2.429016106                         ADBE
+11  -1.588333421  3.419118151                          ADI
+12   0.220845868 -0.900078375                          ADM
+13  -1.644697631  1.461241290                          ADP
+14  -0.579858932  1.162159134                          ADS
+15  -2.742462654  2.307582021                         ADSK
+16   3.048660709 -3.355681993                          AEE
+17   3.175081295 -3.376210291                          AEP
+18   3.127614417 -3.434693573                          AES
+19  -0.799818097 -1.236312854                          AFL
+20  -1.138215256 -1.491930444                          AGN
+21  -1.095736154 -1.680394233                          AIG
+22   2.564845013 -6.125178256                          AIV
+23  -0.997085105 -1.259257031                          AIZ
+24  -1.043716415 -0.827865173                          AJG
+25  -1.180781000  1.493195519                         AKAM
+26   0.751536076  2.368825395                          ALB
+27  -2.744050900  2.024674725                         ALGN
+28   1.318478021  1.557991165                          ALK
+29  -0.879498002 -1.064614770                          ALL
+30   0.181501426  2.174856875                         ALLE
+31  -2.211097430  1.806104579                         ALXN
+32  -1.596274779  3.506320098                         AMAT
+33  -2.818000468  2.171736420                          AMD
+34   0.104146905  2.406937258                          AME
+35  -2.219915431 -1.987548551                          AMG
+36  -1.729030179  0.007181482                         AMGN
+37  -1.594917704 -2.076064189                          AMP
+38   2.601562479 -5.798341324                          AMT
+39  -2.757613125  2.653749697                         AMZN
+40  -2.576338365  2.301016772                         ANET
+41  -2.471361193  2.353175150                         ANSS
+42  -0.818521940  0.126013315                         ANTM
+43  -0.999366611 -0.770856102                          AON
+44   0.528701991  1.759558573                          AOS
+45   4.297342968  1.435413671                          APA
+46   4.407618279  1.362170757                          APC
+47   0.297267764  1.676982737                          APD
+48  -0.805861645  2.104534815                          APH
+49  -0.065839399  2.219008930                         APTV
+50   2.566020882 -6.329702250                          ARE
+51   0.114169911  2.621354369                         ARNC
+52   2.881647141 -3.316265125                          ATO
+53  -2.478956151  2.816032488                         ATVI
+54   2.679537582 -6.090461293                          AVB
+55  -1.130998554  1.896661394                         AVGO
+56   0.009213295  1.993675365                          AVY
+57   3.083325368 -3.322428693                          AWK
+58  -2.177230766 -1.669316032                          AXP
+59   0.404001217 -0.273632043                          AZO
+60  -0.679886090  2.157317544                           BA
+61  -2.199572162 -2.322899848                          BAC
+62  -1.204759877  0.854247921                          BAX
+63  -2.323922782 -2.752949710                          BBT
+64   0.716056850  0.405016397                          BBY
+65  -1.115672422  0.914615348                          BDX
+66  -2.076163291 -1.922105765                          BEN
+67  -1.597997753 -2.214383939                          BHF
+68   4.046698512  1.465305183                         BHGE
+69  -1.780328890  0.030437595                         BIIB
+70  -2.128492510 -2.305166890                           BK
+71  -1.518966607  1.846251148                         BKNG
+72  -2.266203497 -1.934702955                          BLK
+73  -0.185786507  0.525400475                          BLL
+74  -1.454209338  0.190929968                          BMY
+75  -1.056721398  1.204144395                           BR
+76  -1.552330510  1.067059979                          BSX
+77   0.062079126  2.292495302                          BWA
+78   2.435005435 -6.305471667                          BXP
+79  -1.876296013 -2.179754626                            C
+80   1.567178724 -2.046424659                          CAG
+81  -1.034054401 -0.571121412                          CAH
+82   0.374432769  2.881512588                          CAT
+83  -0.865974502 -1.253528439                           CB
+84  -1.498508825 -1.018423015                         CBOE
+85   0.051015893  1.867140567                         CBRE
+86  -0.323626793 -1.118950637                          CBS
+87   2.579263033 -5.652452365                          CCI
+88  -2.140321241  2.376800356                         CDNS
+89   0.626831051  2.001220943                           CE
+90  -1.750788667 -0.064915583                         CELG
+91  -1.287391637  0.294254149                         CERN
+92   0.798445832  1.985358329                           CF
+93  -2.355854581 -2.821703227                          CFG
+94   2.006462517 -2.875845659                          CHD
+95  -0.385487999  1.223598770                         CHRW
+96  -0.491849373 -1.604626109                         CHTR
+97  -0.879378575  0.058030773                           CI
+98  -0.788180222 -1.244383713                         CINF
+99   1.653387688 -2.621952791                           CL
+100  1.969003426 -2.906876149                          CLX
+101 -2.441254596 -2.713292668                          CMA
+102 -0.405237656 -1.441224081                        CMCSA
+103 -1.471607053 -0.939706931                          CME
+104 -0.032786359  0.088274986                          CMG
+105  0.332275619  2.801762077                          CMI
+106  3.143084549 -3.333866581                          CMS
+107 -0.978363873  0.258505128                          CNC
+108  2.967417474 -3.478925294                          CNP
+109 -2.154911194 -1.801824982                          COF
+110  3.657879912  1.431156487                          COG
+111 -1.393096518  1.152757019                          COO
+112  4.285119396  1.363475679                          COP
+113  0.575761769 -0.292110485                         COST
+114 -0.790508482  1.122692724                         COTY
+115  1.978000360 -2.452074114                          CPB
+116  0.032173842  1.324756502                         CPRI
+117 -1.247611621  0.930548776                         CPRT
+118 -2.755893797  2.354886395                          CRM
+119 -1.731727029  2.470961008                         CSCO
+120 -0.469539444  2.124838060                          CSX
+121 -0.729800125  1.155376419                         CTAS
+122  0.426909742 -1.633561511                          CTL
+123 -1.526479415  1.294185921                         CTSH
+124 -0.607549358  0.581287110                         CTXS
+125 -0.998888828 -0.537422844                          CVS
+126  4.008742808  1.495180864                          CVX
+127  4.441501626  1.322013914                          CXO
+128  3.100345973 -3.286165062                            D
+129  1.304965914  1.512473832                          DAL
+130  0.367388326  2.938535254                           DE
+131 -2.191119877 -1.752138649                          DFS
+132  0.881330438 -0.031265726                           DG
+133 -0.403758730 -0.524043739                          DGX
+134  0.941219391  0.883100176                          DHI
+135 -1.257470086  1.091050194                          DHR
+136 -0.235567127 -1.114630248                          DIS
+137 -0.390124158 -1.400217896                        DISCA
+138 -0.612936311 -1.471196906                        DISCK
+139 -0.447510056 -1.685604086                         DISH
+140  2.633276153 -6.156305718                          DLR
+141  0.609402478 -0.037198980                         DLTR
+142  0.145609441  2.508229803                          DOV
+143  2.511204756 -6.056731920                          DRE
+144 -1.052172266  0.025574389                          DRI
+145  3.116787822 -3.328428825                          DTE
+146  3.154337754 -3.319909115                          DUK
+147 -0.717623571 -0.193046977                          DVA
+148  4.371344968  1.411823992                          DVN
+149  0.835699055  2.183089147                         DWDP
+150 -0.903703845  1.359595258                          DXC
+151 -2.645379649  2.675982041                           EA
+152 -0.269435806  2.819018111                         EBAY
+153 -0.269259206  0.300234297                          ECL
+154  3.090606585 -3.546231378                           ED
+155 -0.309817292 -0.583245872                          EFX
+156  2.968374449 -3.534049618                          EIX
+157 -0.545809156  0.857914862                           EL
+158  0.755629380  2.010562083                          EMN
+159  0.394706253  2.496475648                          EMR
+160  4.475760170  1.331703477                          EOG
+161  2.585472810 -6.187104585                         EQIX
+162  2.573059675 -6.108803257                          EQR
+163  2.996056270 -3.299071348                           ES
+164  2.744582994 -6.047460256                          ESS
+165 -2.424549926 -2.218608855                         ETFC
+166  0.189103876  2.899364017                          ETN
+167  2.845601527 -3.469451919                          ETR
+168  2.887233640 -3.211489284                         EVRG
+169 -2.287924874  1.970940483                           EW
+170  2.916923298 -3.134658920                          EXC
+171 -0.186446314  1.817467761                         EXPD
+172 -1.215289407  1.725382120                         EXPE
+173  2.738969497 -6.089810627                          EXR
+174 -1.460939478 -1.484533495                            F
+175  4.435716563  1.282830175                         FANG
+176 -0.443624097  0.766099493                         FAST
+177 -2.584035139  2.514580985                           FB
+178  0.703100563  1.423866891                         FBHS
+179  0.576016606  2.669345863                          FCX
+180 -0.109506335  1.503677022                          FDX
+181  3.146523609 -3.235193452                           FE
+182 -1.585757847  1.762063602                         FFIV
+183 -1.116293097  0.989670266                          FIS
+184 -1.037065595  0.774102356                         FISV
+185 -2.492306258 -2.833565650                         FITB
+186  0.521786182  0.350342148                           FL
+187 -0.999130292  2.276534749                         FLIR
+188  0.980474318  2.435795351                          FLR
+189  0.430076626  2.472110452                          FLS
+190 -2.014776783  1.949745655                          FLT
+191  0.886727096  2.172674096                          FMC
+192 -0.092137076 -0.959463159                          FOX
+193 -0.052068401 -0.914858522                         FOXA
+194 -2.168044874 -2.821256895                          FRC
+195  2.489210050 -6.283504675                          FRT
+196  4.303861111  1.521995575                          FTI
+197 -2.466036869  2.175056522                         FTNT
+198 -0.160377687  2.221952642                          FTV
+199  1.043468606  3.224591698                           GD
+200 -1.061186996 -1.455986057                           GE
+201 -1.788465156 -0.001072917                         GILD
+202  1.815798139 -2.373829895                          GIS
+203 -0.076465502  2.652338284                          GLW
+204 -1.690942793 -1.661417383                           GM
+205 -2.584056610  2.632849903                         GOOG
+206 -2.613088545  2.543550537                        GOOGL
+207  0.452968157 -0.284055705                          GPC
+208 -2.320472425  2.335098951                          GPN
+209  0.980735151  0.116804275                          GPS
+210 -0.404556455  0.942534971                         GRMN
+211 -2.114945317 -2.330003496                           GS
+212  0.954763254  1.951835585                           GT
+213 -0.396321166  0.724769446                          GWW
+214  4.226634122  1.568703924                          HAL
+215 -0.635024803  0.654613858                          HAS
+216 -2.349599084 -2.780058924                         HBAN
+217 -2.366128082 -2.628974160                          HBI
+218  0.049368284 -0.103418643                          HCA
+219  2.672512553 -6.286157389                          HCP
+220  0.652780492  0.315730072                           HD
+221  4.470331312  1.265294728                          HES
+222  3.312908539  1.405335523                          HFC
+223 -0.946031556 -1.291853241                          HIG
+224  1.008850348  3.174405916                          HII
+225 -1.496214769  1.617083905                          HLT
+226 -1.436362717 -2.137904156                          HOG
+227 -0.882968539  1.015830438                         HOLX
+228 -0.208563042  1.457517224                          HON
+229  4.182771188  1.565518429                           HP
+230 -1.392250331  2.580338660                          HPE
+231 -1.428164034  2.843112988                          HPQ
+232 -0.266262258  0.474560078                          HRB
+233  1.735248340 -2.138003718                          HRL
+234  1.019379601  3.271362393                          HRS
+235 -1.417781117  0.569211125                         HSIC
+236  2.731881014 -6.406045416                          HST
+237  2.012137881 -2.450095099                          HSY
+238 -0.950726437  0.067073145                          HUM
+239 -1.090201740  0.661355809                          IBM
+240 -1.514942187 -0.937867770                          ICE
+241 -2.696876245  2.053708480                         IDXX
+242  0.488995720 -1.063159854                          IFF
+243 -1.990669856  2.237661052                         ILMN
+244 -1.826529342  2.529246839                         INCY
+245 -1.150640687  1.386714054                         INFO
+246 -1.543508486  3.141891275                         INTC
+247 -2.641546618  2.272118484                         INTU
+248  0.459632437  2.330712012                           IP
+249 -0.288384095 -1.107227863                          IPG
+250 -0.880124914  2.878813309                         IPGP
+251 -1.021059273  1.736414486                          IQV
+252 -0.106339387  2.575247585                           IR
+253  2.865610406 -5.934531851                          IRM
+254 -2.638128862  2.124457711                         ISRG
+255 -0.896048734  1.029716992                           IT
+256  0.145148247  2.687815017                          ITW
+257 -2.141281985 -1.968768345                          IVZ
+258 -0.416062494  1.820024020                         JBHT
+259  0.301969029  1.582551646                          JCI
+260 -0.004134780  1.964781088                          JEC
+261 -1.809727712 -1.854417308                          JEF
+262 -1.110692004  1.015695570                         JKHY
+263 -1.255333425 -0.342112788                          JNJ
+264 -0.890199153  1.407720582                         JNPR
+265 -2.155829757 -2.185131754                          JPM
+266  1.081194534  0.091979760                          JWN
+267  1.804755423 -2.346992832                            K
+268 -2.544290052 -2.729723298                          KEY
+269 -1.665722381  1.882744042                         KEYS
+270  1.476370362 -2.281818788                          KHC
+271  2.425962674 -6.220532441                          KIM
+272 -1.580531893  3.530663649                         KLAC
+273  2.103477685 -3.051977131                          KMB
+274  3.739269445  1.430976995                          KMI
+275  0.404687432  0.262457864                          KMX
+276  0.959528929 -1.799380315                           KO
+277  0.676441149 -0.341317959                           KR
+278  1.088254615  0.018682279                          KSS
+279 -0.404540435  2.087847968                          KSU
+280 -0.876240373 -1.400299476                            L
+281  1.019295939 -0.036842107                           LB
+282  0.675294619  1.313308975                          LEG
+283  0.948793448  0.915218902                          LEN
+284 -0.566571929 -0.508055962                           LH
+285  0.068315660  0.858592421                          LIN
+286 -0.110940496  2.541223369                          LKQ
+287  1.071679091  3.263526652                          LLL
+288 -1.534702310 -0.258347035                          LLY
+289  1.174380805  3.368701363                          LMT
+290 -1.569215037 -2.171314972                          LNC
+291  3.067571307 -3.253426713                          LNT
+292  0.451835566  0.497073500                          LOW
+293 -1.607796938  3.570794887                         LRCX
+294  1.206996145  1.458552862                          LUV
+295 -0.013988133 -0.369592933                           LW
+296  0.836165730  2.146899247                          LYB
+297  1.099714833 -0.001062634                            M
+298 -2.390496479  2.477037116                           MA
+299  2.624398879 -6.055644385                          MAA
+300  2.286798731 -6.293917585                          MAC
+301 -1.544942060  1.684784054                          MAR
+302  0.604153730  1.515331876                          MAS
+303 -1.390958609  1.397432896                          MAT
+304 -0.396869193 -0.650015032                          MCD
+305 -1.587802699  3.382665760                         MCHP
+306 -1.016559474 -0.501492356                          MCK
+307 -1.959882268  1.471776709                          MCO
+308  1.199384604 -2.026387783                         MDLZ
+309 -1.293784893  0.865184272                          MDT
+310 -1.470989287 -2.248547039                          MET
+311 -0.233112516  2.506911633                          MGM
+312  0.769014446  1.334604577                          MHK
+313  1.673397447 -2.195579872                          MKC
+314  0.392899020  1.100382041                          MLM
+315 -1.052218371 -0.860596868                          MMC
+316  0.378116860  2.636253890                          MMM
+317 -1.030073882  0.196036871                         MNST
+318  1.143580519 -2.163431027                           MO
+319  0.836566242  1.980317329                          MOS
+320  3.267195765  1.440472524                          MPC
+321 -1.335632783 -0.265765319                          MRK
+322  4.411916937  1.309066860                          MRO
+323 -2.262720383 -2.244928320                           MS
+324 -2.093165885  1.643644582                         MSCI
+325 -2.484920893  2.464526247                         MSFT
+326 -1.189042594  1.312322782                          MSI
+327 -2.349375059 -2.817381097                          MTB
+328 -1.099998421  1.754248756                          MTD
+329 -1.548044021  3.572809297                           MU
+330 -1.688271932  3.463588408                         MXIM
+331 -1.871290745 -1.722050326                          MYL
+332  4.507200786  1.369202303                          NBL
+333 -1.333396989  1.940171190                         NCLH
+334 -1.543955986 -0.979407808                         NDAQ
+335  3.067487651 -3.423527662                          NEE
+336  0.095358444 -0.466672456                          NEM
+337 -2.691035718  2.742234778                         NFLX
+338  3.140807046 -3.271392154                           NI
+339 -0.228523494  1.339834422                          NKE
+340 -1.581576064  0.773102554                         NKTR
+341 -1.828970515 -1.450666260                         NLSN
+342  1.130519573  3.305137811                          NOC
+343  4.264490042  1.551822056                          NOV
+344  2.818464992 -2.840845242                          NRG
+345 -0.419942332  2.223211282                          NSC
+346 -2.056537390  2.327647312                         NTAP
+347 -2.107553254 -2.272737433                         NTRS
+348  0.298397614  1.873479522                          NUE
+349 -2.749390836  2.240512106                         NVDA
+350 -0.514875167  1.792082462                          NWL
+351  0.324776721  0.886290341                          NWS
+352  0.355922062  0.896421285                         NWSA
+353  2.717408233 -6.041444659                            O
+354  3.910663563  1.442200320                          OKE
+355 -0.272444272 -1.224362354                          OMC
+356 -0.319352485  1.551813135                         ORCL
+357  0.343516721 -0.096170104                         ORLY
+358  3.997615700  1.277704377                          OXY
+359 -1.059917683  0.532571747                         PAYX
+360 -1.963944588 -2.719452539                         PBCT
+361  0.303638050  2.890098904                         PCAR
+362  3.184462320 -3.368547108                          PEG
+363  1.512753618 -2.267461814                          PEP
+364 -1.466890957 -0.109016945                          PFE
+365 -1.486797142 -2.152341016                          PFG
+366  1.577975706 -2.475750855                           PG
+367 -0.919336806 -0.770902222                          PGR
+368  0.183234454  2.829080707                           PH
+369  0.925176575  0.829062003                          PHM
+370  0.541477123  2.397525125                          PKG
+371 -1.156054380  2.019792494                          PKI
+372  2.557183987 -6.014472615                          PLD
+373  1.267104260 -2.296327348                           PM
+374 -2.198201480 -2.567533809                          PNC
+375  0.564327841  2.234253655                          PNR
+376  3.058537156 -3.362714593                          PNW
+377  0.602026885  1.686207055                          PPG
+378  3.016665610 -3.512479477                          PPL
+379 -1.218681966 -1.823868097                         PRGO
+380 -1.560098488 -2.205185558                          PRU
+381  2.818035117 -6.264690834                          PSA
+382  3.445926581  1.411114362                          PSX
+383 -0.057225499  1.419981139                          PVH
+384 -0.202192773  2.669516488                          PWR
+385  4.392198330  1.386510130                          PXD
+386 -2.442823893  2.445696668                         PYPL
+387 -0.004170424  2.089189986                         QCOM
+388 -1.781090171  3.486771873                         QRVO
+389 -1.429941914  1.875490636                          RCL
+390 -0.998737889 -1.169510045                           RE
+391  2.406870941 -6.297124256                          REG
+392 -1.762225239  0.634967099                         REGN
+393 -2.650340158 -2.665805446                           RF
+394 -1.973170690  1.968677310                          RHI
+395 -0.670861789  0.281217771                          RHT
+396 -2.543062256 -2.078413860                          RJF
+397  0.008451438  1.140443055                           RL
+398 -0.972979775  1.474757490                          RMD
+399  0.167376016  2.904560355                          ROK
+400 -0.288149646  0.472905851                          ROL
+401  0.418730609  2.400524071                          ROP
+402  0.944713829  0.048179316                         ROST
+403 -0.192717631 -0.563212587                          RSG
+404  1.087987881  3.237462950                          RTN
+405  2.564280190 -5.641389931                         SBAC
+406 -0.340073563  0.340765485                         SBUX
+407 -2.384224286 -2.111449936                         SCHW
+408 -0.083070870 -0.627519644                          SEE
+409  0.700955453  1.546147430                          SHW
+410 -2.604125639 -2.481622331                         SIVB
+411  1.775901671 -2.284581212                          SJM
+412  4.266742188  1.447873754                          SLB
+413  2.448611797 -6.365612665                          SLG
+414 -0.667601173  1.463353391                          SNA
+415 -2.113225491  2.466318012                         SNPS
+416  3.161312224 -3.392549145                           SO
+417  2.296068130 -6.178479086                          SPG
+418 -1.952340903  1.529696191                         SPGI
+419  2.919828835 -3.261315784                          SRE
+420 -2.458061063 -2.756259794                          STI
+421 -1.922375516 -2.392373026                          STT
+422 -1.084504638  3.146564503                          STX
+423 -0.619345133  0.293273411                          STZ
+424  0.074160388  2.881724006                          SWK
+425 -1.757257300  3.397224687                         SWKS
+426 -2.427124360 -1.947135313                          SYF
+427 -1.426253280  1.022573504                          SYK
+428  0.453111005  1.069279226                         SYMC
+429  0.092400227 -0.733697504                          SYY
+430  0.238179388 -1.556301752                            T
+431  0.976600520 -1.777834219                          TAP
+432 -0.107070602  2.509282839                          TDG
+433 -0.617108952  2.701702628                          TEL
+434 -1.335144848  1.144418344                          TFX
+435  0.957670429 -0.091450174                          TGT
+436  0.037851059  0.970790253                          TIF
+437  0.835204870  0.167226340                          TJX
+438 -1.447449647 -1.588446692                          TMK
+439 -0.944112996  1.863837266                          TMO
+440 -0.135245934  1.227007037                          TPR
+441 -2.353910679  2.354022587                         TRIP
+442 -2.300859915 -1.786098796                         TROW
+443 -0.793901543 -1.172948556                          TRV
+444  0.646277815  0.024900141                         TSCO
+445  1.659641619 -2.104594768                          TSN
+446 -2.000616070  2.004642837                          TSS
+447 -2.529233883  2.830185486                         TTWO
+448 -2.757210570  2.603516840                         TWTR
+449 -1.547210455  3.286185920                          TXN
+450  0.337044751  2.515424942                          TXT
+451  0.141576302  1.457551762                           UA
+452  0.121799411  1.285783811                          UAA
+453  1.399244971  1.450563635                          UAL
+454  2.490346363 -5.884979660                          UDR
+455  0.080845693 -0.199303819                          UHS
+456 -0.815302264  0.749992919                         ULTA
+457 -0.847029938  0.075046786                          UNH
+458 -1.453721863 -2.138051777                          UNM
+459 -0.428388132  2.166934629                          UNP
+460  0.054002972  0.429458777                          UPS
+461  0.332044036  2.822787786                          URI
+462 -1.263857448 -1.670292548                          USB
+463  0.071623149  2.238753378                          UTX
+464 -1.981422871  2.243242690                            V
+465 -0.869476578  1.894943435                          VAR
+466 -0.130111163  1.092356097                          VFC
+467 -0.124170671 -1.291849261                         VIAB
+468  3.335595058  1.383661944                          VLO
+469  0.544401745  1.041324768                          VMC
+470  2.331455206 -6.356966677                          VNO
+471 -0.601623471  0.826642959                         VRSK
+472 -2.440038276  2.422005092                         VRSN
+473 -1.850405157  2.161520301                         VRTX
+474  2.666841993 -6.310069614                          VTR
+475  0.852534598 -1.821016368                           VZ
+476 -0.904018094  2.097260212                          WAT
+477 -0.470635573 -0.420277271                          WBA
+478 -0.903294944  0.135610483                          WCG
+479 -1.136130493  3.192118747                          WDC
+480  3.199108906 -3.401740371                          WEC
+481  2.715131355 -6.484697752                         WELL
+482 -1.843789586 -2.468970543                          WFC
+483  0.466958406  1.453257602                          WHR
+484 -1.029736460 -0.848492919                         WLTW
+485 -0.005020159 -0.432425642                           WM
+486  3.880810204  1.530415157                          WMB
+487  0.750132381 -0.637103823                          WMT
+488  0.471508680  2.279547017                          WRK
+489 -0.416832853  0.267636408                           WU
+490  2.161817890 -6.327290007                           WY
+491 -0.239455118  2.556289675                         WYNN
+492  4.495804905  1.289852019                          XEC
+493  3.359146094 -3.229623657                          XEL
+494 -1.590623599  3.342234602                         XLNX
+495  3.956832065  1.398136965                          XOM
+496 -1.398707422  0.795174193                         XRAY
+497 -0.203824165  1.651709493                          XRX
+498  0.453645379  2.681064245                          XYL
+499 -0.313055710  0.097162980                          YUM
+500 -1.092526221  0.809159323                          ZBH
+501 -2.663933541 -2.642333729                         ZION
+502 -0.973227830  1.336913750                          ZTS</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output: umap_results_tbl</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Finally, let’s make a quick visualization of the <code>umap_results_tbl</code>.</p>
 <ul>
@@ -2074,15 +2095,15 @@ $ adjusted &lt;dbl&gt; 15.86624, 16.01451, 16.20183, 15.22628, 15.70234, 15.2340
 <li>Add a <code>geom_point()</code> geometry with an <code>alpha = 0.5</code></li>
 <li>Apply <code>theme_tq()</code> and add a title “UMAP Projection”</li>
 </ul>
-<div class="cell" data-hash="Chapter_1_Challenge_fahad_cache/html/unnamed-chunk-17_6d1712cdf558b1152e33d9a26637f52a">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize UMAP results</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>umap_results_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> V1, <span class="at">y =</span> V2)) <span class="sc">+</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_tq</span>() <span class="sc">+</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"UMAP Projection"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize UMAP results</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>umap_results_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> V1, <span class="at">y =</span> V2)) <span class="sc">+</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_tq</span>() <span class="sc">+</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"UMAP Projection"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure class="figure">
 <p><a href="Chapter_1_Challenge_fahad_files/figure-html/unnamed-chunk-17-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="Chapter_1_Challenge_fahad_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
@@ -2095,17 +2116,17 @@ $ adjusted &lt;dbl&gt; 15.86624, 16.01451, 16.20183, 15.22628, 15.70234, 15.2340
 <h2 class="anchored" data-anchor-id="step-6---combine-k-means-and-umap">Step 6 - Combine K-Means and UMAP</h2>
 <p>Next, we combine the K-Means clusters and the UMAP 2D representation</p>
 <p>We’re going to import the correct results first (just in case you were not able to complete the last step).</p>
-<div class="cell" data-hash="Chapter_1_Challenge_fahad_cache/html/unnamed-chunk-18_43fc85c7969dd8f5efb06775dfed349f">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>k_means_mapped_tbl <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Business Decisions with Machine Learning/k_means_mapped_tbl.rds"</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>umap_results_tbl   <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Business Decisions with Machine Learning/umap_results_tbl.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>k_means_mapped_tbl <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Business Decisions with Machine Learning/k_means_mapped_tbl.rds"</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>umap_results_tbl   <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Business Decisions with Machine Learning/umap_results_tbl.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>First, pull out the K-Means for 10 Centers. Use this since beyond this value the Scree Plot flattens. Have a look at the business case to recall how that works.</p>
-<div class="cell" data-hash="Chapter_1_Challenge_fahad_cache/html/unnamed-chunk-19_89756ad442b92792ecf711a4a52d19d1">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the k_means_obj from the 10th center</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>k_means_obj <span class="ot">&lt;-</span> k_means_mapped_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(k_means) <span class="sc">%&gt;%</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pluck</span>(<span class="dv">10</span>)</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Store as k_means_obj</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the k_means_obj from the 10th center</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>k_means_obj <span class="ot">&lt;-</span> k_means_mapped_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(k_means) <span class="sc">%&gt;%</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pluck</span>(<span class="dv">10</span>)</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Store as k_means_obj</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next, we’ll combine the clusters from the <code>k_means_obj</code> with the <code>umap_results_tbl</code>.</p>
 <ul>
@@ -2116,15 +2137,17 @@ $ adjusted &lt;dbl&gt; 15.86624, 16.01451, 16.20183, 15.22628, 15.70234, 15.2340
 <li>Left join the result with the result of <code>sp_500_index_tbl %&gt;% select(symbol, company, sector)</code> by the <code>symbol</code> column.</li>
 <li>Store the output as <code>umap_kmeans_results_tbl</code></li>
 </ul>
-<div class="cell" data-hash="Chapter_1_Challenge_fahad_cache/html/unnamed-chunk-20_06663a8329bad01628d24f372a5c8109">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use your dplyr &amp; broom skills to combine the k_means_obj with the umap_results_tbl</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>umap_kmeans_results_tbl <span class="ot">&lt;-</span> k_means_obj <span class="sc">%&gt;%</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(stock_date_matrix_tbl) <span class="sc">%&gt;%</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(symbol, .cluster) <span class="sc">%&gt;%</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(umap_results_tbl) <span class="sc">%&gt;%</span></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(sp_500_index_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(symbol, company, sector), <span class="at">by =</span> <span class="st">"symbol"</span>)</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>umap_kmeans_results_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use your dplyr &amp; broom skills to combine the k_means_obj with the umap_results_tbl</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>umap_kmeans_results_tbl <span class="ot">&lt;-</span> k_means_obj <span class="sc">%&gt;%</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(stock_date_matrix_tbl) <span class="sc">%&gt;%</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(symbol, .cluster) <span class="sc">%&gt;%</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(umap_results_tbl) <span class="sc">%&gt;%</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(sp_500_index_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(symbol, company, sector), <span class="at">by =</span> <span class="st">"symbol"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(symbol)`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>umap_kmeans_results_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 502 × 6
    symbol .cluster      V1      V2 company                       sector         
@@ -2141,7 +2164,7 @@ $ adjusted &lt;dbl&gt; 15.86624, 16.01451, 16.20183, 15.22628, 15.70234, 15.2340
 10 ADBE   9         0.570   3.43   Adobe Inc.                    Information Te…
 # ℹ 492 more rows</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output: umap_kmeans_results_tbl </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output: umap_kmeans_results_tbl </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Plot the K-Means and UMAP results.</p>
 <ul>
@@ -2150,13 +2173,13 @@ $ adjusted &lt;dbl&gt; 15.86624, 16.01451, 16.20183, 15.22628, 15.70234, 15.2340
 <li>Add the <code>geom_point()</code> geometry with <code>alpha = 0.5</code></li>
 <li>Apply colors as you desire (e.g.&nbsp;<code>scale_color_manual(values = palette_light() %&gt;% rep(3))</code>)</li>
 </ul>
-<div class="cell" data-hash="Chapter_1_Challenge_fahad_cache/html/unnamed-chunk-21_a032afe3d33ccd15afd08902440625d2">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the combined K-Means and UMAP results</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>umap_kmeans_results_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> V1, <span class="at">y =</span> V2, <span class="at">color =</span>.cluster)) <span class="sc">+</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the combined K-Means and UMAP results</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>umap_kmeans_results_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> V1, <span class="at">y =</span> V2, <span class="at">color =</span>.cluster)) <span class="sc">+</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure class="figure">
 <p><a href="Chapter_1_Challenge_fahad_files/figure-html/unnamed-chunk-21-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="Chapter_1_Challenge_fahad_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
@@ -2211,6 +2234,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -2279,13 +2329,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'alternate';
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -2312,12 +2364,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
     }
-  });
-  clipboard.on('success', function(e) {
+    return false;
+  }
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2349,11 +2404,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2363,8 +2457,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2376,9 +2479,245 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -2419,7 +2758,39 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"loop":true,"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","selector":".lightbox"});</script>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","loop":false,"openEffect":"zoom","closeEffect":"zoom"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
 
 
 

@@ -14,19 +14,24 @@ website:
         text: Home
       - text: "Journal"
         menu: 
-          - text: "01 Tidyverse"
-            file: content/01_journal/01_tidyverse.qmd
-          - text: "02 Data Acquisition"
-            file: content/01_journal/02_data_acquisition.qmd
-          - text: "03 Data Wrangling"
-            file: content/01_journal/03_data_wrangling.qmd
-          - text: "04 Data Visualization"
-            file: content/01_journal/04_data_visualization.qmd
+          - text: "Challenge 1 Fundamentals of Machine Learning"
+            file: C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Chapter_1_Challenge_fahad.qmd
+          - text: "Challenge 2 Supervised ML"
+            file: C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Chapter_2_Challenge-Fahad.qmd
+          - text: "Challenge 3 Automated Machine Learning with H2O (I)"
+            file: C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Chapter_3_Challenge_fahad.qmd
+          - text: "Challenge 3b and 4 Automated Machine Learning with H2O (II) and Precision Measuring"
+            file: C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Chapter_3b _and_4_Challenge_fahad.qmd
+          - text: "Challenge 5 Lime"
+            file: C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/05_lime.qmd
+            
       - text: "Class notes"
         file: content/02_notes/05_class_notes.qmd
       - text: "Links"
         file: content/03_other/06_links.qmd
-
+exclude:
+  - ".Rhistory"
+  - "**/Chapter_1_Challenge_fahad_files/**"
 format:
   html:
     theme:
