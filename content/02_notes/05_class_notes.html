@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2021-06-06">
+<meta name="author" content="Joschka Schwarz">
 
-<title>CHallenge 3 Automated Machine Learning with H20 – MyLabJournal</title>
+<title>Class Notes – MyLabJournal</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,65 +21,28 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./assets/icons/favicon.svg" rel="icon" type="image/svg+xml">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/icons/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -118,7 +81,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">MyLabJournal</span>
     </a>
   </div>
@@ -129,7 +92,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -160,11 +123,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./content/02_notes/05_class_notes.html"> 
+    <a class="nav-link active" href="../../content/02_notes/05_class_notes.html" aria-current="page"> 
 <span class="menu-text">Class notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./content/03_other/06_links.html"> 
+    <a class="nav-link" href="../../content/03_other/06_links.html"> 
 <span class="menu-text">Links</span></a>
   </li>  
 </ul>
@@ -185,20 +148,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">CHallenge 3 Automated Machine Learning with H20</h1>
+<h1 class="title">Class Notes</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    
     <div>
-    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 6, 2021</p>
-    </div>
+             <p>Joschka Schwarz </p>
+          </div>
   </div>
+    
   
     
   </div>
@@ -208,189 +171,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="first" class="level1">
-<h1>First</h1>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.3.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyr' was built under R version 4.3.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'dplyr' was built under R version 4.3.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.2     ✔ tidyr     1.3.1
-✔ purrr     1.0.1     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'GGally' was built under R version 4.3.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Registered S3 method overwritten by 'GGally':
-  method from   
-  +.gg   ggplot2</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>employee_attrition_tbl <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Business Decisions with Machine Learning/datasets-1067-1925-WA_Fn-UseC_-HR-Employee-Attrition.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 1470 Columns: 35
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr  (9): Attrition, BusinessTravel, Department, EducationField, Gender, Job...
-dbl (26): Age, DailyRate, DistanceFromHome, Education, EmployeeCount, Employ...
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 1,470
-Columns: 35
-$ Age                      &lt;dbl&gt; 41, 49, 37, 33, 27, 32, 59, 30, 38, 36, 35, 2…
-$ Attrition                &lt;chr&gt; "Yes", "No", "Yes", "No", "No", "No", "No", "…
-$ BusinessTravel           &lt;chr&gt; "Travel_Rarely", "Travel_Frequently", "Travel…
-$ DailyRate                &lt;dbl&gt; 1102, 279, 1373, 1392, 591, 1005, 1324, 1358,…
-$ Department               &lt;chr&gt; "Sales", "Research &amp; Development", "Research …
-$ DistanceFromHome         &lt;dbl&gt; 1, 8, 2, 3, 2, 2, 3, 24, 23, 27, 16, 15, 26, …
-$ Education                &lt;dbl&gt; 2, 1, 2, 4, 1, 2, 3, 1, 3, 3, 3, 2, 1, 2, 3, …
-$ EducationField           &lt;chr&gt; "Life Sciences", "Life Sciences", "Other", "L…
-$ EmployeeCount            &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
-$ EmployeeNumber           &lt;dbl&gt; 1, 2, 4, 5, 7, 8, 10, 11, 12, 13, 14, 15, 16,…
-$ EnvironmentSatisfaction  &lt;dbl&gt; 2, 3, 4, 4, 1, 4, 3, 4, 4, 3, 1, 4, 1, 2, 3, …
-$ Gender                   &lt;chr&gt; "Female", "Male", "Male", "Female", "Male", "…
-$ HourlyRate               &lt;dbl&gt; 94, 61, 92, 56, 40, 79, 81, 67, 44, 94, 84, 4…
-$ JobInvolvement           &lt;dbl&gt; 3, 2, 2, 3, 3, 3, 4, 3, 2, 3, 4, 2, 3, 3, 2, …
-$ JobLevel                 &lt;dbl&gt; 2, 2, 1, 1, 1, 1, 1, 1, 3, 2, 1, 2, 1, 1, 1, …
-$ JobRole                  &lt;chr&gt; "Sales Executive", "Research Scientist", "Lab…
-$ JobSatisfaction          &lt;dbl&gt; 4, 2, 3, 3, 2, 4, 1, 3, 3, 3, 2, 3, 3, 4, 3, …
-$ MaritalStatus            &lt;chr&gt; "Single", "Married", "Single", "Married", "Ma…
-$ MonthlyIncome            &lt;dbl&gt; 5993, 5130, 2090, 2909, 3468, 3068, 2670, 269…
-$ MonthlyRate              &lt;dbl&gt; 19479, 24907, 2396, 23159, 16632, 11864, 9964…
-$ NumCompaniesWorked       &lt;dbl&gt; 8, 1, 6, 1, 9, 0, 4, 1, 0, 6, 0, 0, 1, 0, 5, …
-$ Over18                   &lt;chr&gt; "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", …
-$ OverTime                 &lt;chr&gt; "Yes", "No", "Yes", "Yes", "No", "No", "Yes",…
-$ PercentSalaryHike        &lt;dbl&gt; 11, 23, 15, 11, 12, 13, 20, 22, 21, 13, 13, 1…
-$ PerformanceRating        &lt;dbl&gt; 3, 4, 3, 3, 3, 3, 4, 4, 4, 3, 3, 3, 3, 3, 3, …
-$ RelationshipSatisfaction &lt;dbl&gt; 1, 4, 2, 3, 4, 3, 1, 2, 2, 2, 3, 4, 4, 3, 2, …
-$ StandardHours            &lt;dbl&gt; 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 8…
-$ StockOptionLevel         &lt;dbl&gt; 0, 1, 0, 0, 1, 0, 3, 1, 0, 2, 1, 0, 1, 1, 0, …
-$ TotalWorkingYears        &lt;dbl&gt; 8, 10, 7, 8, 6, 8, 12, 1, 10, 17, 6, 10, 5, 3…
-$ TrainingTimesLastYear    &lt;dbl&gt; 0, 3, 3, 3, 3, 2, 3, 2, 2, 3, 5, 3, 1, 2, 4, …
-$ WorkLifeBalance          &lt;dbl&gt; 1, 3, 3, 3, 3, 2, 2, 3, 3, 2, 3, 3, 2, 3, 3, …
-$ YearsAtCompany           &lt;dbl&gt; 6, 10, 0, 8, 2, 7, 1, 1, 9, 7, 5, 9, 5, 2, 4,…
-$ YearsInCurrentRole       &lt;dbl&gt; 4, 7, 0, 7, 2, 7, 0, 0, 7, 7, 4, 5, 2, 2, 2, …
-$ YearsSinceLastPromotion  &lt;dbl&gt; 0, 1, 0, 3, 2, 3, 0, 0, 1, 7, 0, 0, 4, 1, 0, …
-$ YearsWithCurrManager     &lt;dbl&gt; 5, 7, 0, 0, 2, 6, 0, 0, 8, 7, 3, 8, 3, 2, 3, …</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plot_ggpairs <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">color =</span> <span class="cn">NULL</span>, <span class="at">density_alpha =</span> <span class="fl">0.5</span>) {</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    color_expr <span class="ot">&lt;-</span> <span class="fu">enquo</span>(color)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (rlang<span class="sc">::</span><span class="fu">quo_is_null</span>(color_expr)) {</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        g <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>            <span class="fu">ggpairs</span>(<span class="at">lower =</span> <span class="st">"blank"</span>) </span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        color_name <span class="ot">&lt;-</span> <span class="fu">quo_name</span>(color_expr)</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        g <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>            <span class="fu">ggpairs</span>(<span class="at">mapping =</span> <span class="fu">aes_string</span>(<span class="at">color =</span> color_name), </span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>                    <span class="at">lower =</span> <span class="st">"blank"</span>, <span class="at">legend =</span> <span class="dv">1</span>,</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>                    <span class="at">diag =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="fu">wrap</span>(<span class="st">"densityDiag"</span>, </span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>                                                  <span class="at">alpha =</span> density_alpha))) <span class="sc">+</span></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>            <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(g)</span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">&lt;-</span> employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Attrition, MonthlyIncome, PercentSalaryHike, StockOptionLevel, EnvironmentSatisfaction, WorkLifeBalance, JobInvolvement, OverTime, TrainingTimesLastYear, YearsAtCompany, YearsSinceLastPromotion) <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_ggpairs</span>(<span class="at">color =</span> Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: `aes_string()` was deprecated in ggplot2 3.0.0.
-ℹ Please use tidy evaluation idioms with `aes()`.
-ℹ See also `vignette("ggplot2-in-packages")` for more information.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggsave</span>(<span class="st">"asd.png"</span>,plot, <span class="at">width =</span> <span class="dv">15</span>, <span class="at">height =</span> <span class="dv">15</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="Chapter_3_Challenge_fahad_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="Chapter_3_Challenge_fahad_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></a></p>
-</figure>
-</div>
-</div>
-</div>
 <p><strong>IMPORTANT:</strong> You can delete everything in here and start fresh. You might want to start by not deleting anything above this line until you know what that stuff is doing.</p>
-<ol type="1">
-<li>Compensation Features What can you deduce about the interaction between Monthly Income and Attrition?</li>
-</ol>
-<ol start="3" type="a">
-<li>Those that are leaving have a lower Monthly Income</li>
-</ol>
-<ol start="2" type="1">
-<li>Compensation Features What can you deduce about the interaction between Percent Salary Hike and Attrition?</li>
-</ol>
-<ol start="4" type="a">
-<li>It’s difficult to deduce anything based on the visualization</li>
-</ol>
-<ol start="3" type="1">
-<li>Compensation Features What can you deduce about the interaction between Stock Option Level and Attrition?</li>
-</ol>
-<ol start="2" type="a">
-<li>Those that are staying have a higher stock option level</li>
-</ol>
-<ol start="4" type="1">
-<li>Survey Results What can you deduce about the interaction between Environment Satisfaction and Attrition?</li>
-</ol>
-<ol type="a">
-<li>A higher proportion of those leaving have a low environment satisfaction level</li>
-</ol>
-<ol start="5" type="1">
-<li>Survey Results What can you deduce about the interaction between Work Life Balance and Attrition</li>
-</ol>
-<ol start="2" type="a">
-<li>Those that are staying have a higher density of 2’s and 3’</li>
-</ol>
-<ol start="6" type="1">
-<li>Performance Data What Can you deduce about the interaction between Job Involvement and Attrition?</li>
-</ol>
-<ol type="a">
-<li>Those that are leaving have a lower density of 3’s and 4’s</li>
-</ol>
-<ol start="7" type="1">
-<li><p>Work-Life Features What can you deduce about the interaction between Over Time and Attrition? a The proportion of those leaving that are working Over Time are high compared to those that are not leaving</p></li>
-<li><p>Training and Education What can you deduce about the interaction between Training Times Last Year and Attrition c It’s difficult to deduce anything based on the visualization</p></li>
-<li><p>Time-Based Features What can you deduce about the interaction between Years At Company and Attrition b People that leave tend to have less working years at the company</p></li>
-<li><p>Time-Based Features What can you deduce about the interaction between Years Since Last Promotion and Attrition?</p></li>
-</ol>
-<ol start="3" type="a">
-<li>It’s difficult to deduce anything based on the visualization</li>
-</ol>
+<p>This is an <code>.qmd</code> file. It is plain text with special features. Any time you write just like this, it will be compiled to normal text in the website. If you put a # in front of your text, it will create a top level-header.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -958,38 +742,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","loop":false});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script>
 
 
 

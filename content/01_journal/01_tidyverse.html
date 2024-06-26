@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.47">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="dcterms.date" content="2021-06-06">
-
-<title>CHallenge 3 Automated Machine Learning with H20 – MyLabJournal</title>
+<meta name="author" content="Joschka Schwarz">
+<title>Tidyverse – MyLabJournal</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,30 +54,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./assets/icons/favicon.svg" rel="icon" type="image/svg+xml">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
-<script id="quarto-search-options" type="application/json">{
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/icons/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -106,19 +101,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-
+}</script><link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 </head>
-
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">MyLabJournal</span>
     </a>
   </div>
@@ -128,16 +119,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+<li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Journal</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">    
-        <li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">
+<li>
     <a class="dropdown-item" href="C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Chapter_1_Challenge_fahad.qmd">
  <span class="dropdown-text">Challenge 1 Fundamentals of Machine Learning</span></a>
   </li>  
@@ -150,7 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Challenge 3 Automated Machine Learning with H2O (I)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Chapter_3b _and_4_Challenge_fahad.qmd">
+    <a class="dropdown-item" href="C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Chapter_3b%20_and_4_Challenge_fahad.qmd">
  <span class="dropdown-text">Challenge 3b and 4 Automated Machine Learning with H2O (II) and Precision Measuring</span></a>
   </li>  
         <li>
@@ -158,242 +149,210 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Challenge 5 Lime</span></a>
   </li>  
     </ul>
-  </li>
+</li>
   <li class="nav-item">
-    <a class="nav-link" href="./content/02_notes/05_class_notes.html"> 
+    <a class="nav-link" href="../../content/02_notes/05_class_notes.html"> 
 <span class="menu-text">Class notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./content/03_other/06_links.html"> 
+    <a class="nav-link" href="../../content/03_other/06_links.html"> 
 <span class="menu-text">Links</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+<li><a href="#text-formatting" id="toc-text-formatting" class="nav-link active" data-scroll-target="#text-formatting"><span class="header-section-number">1</span> Text Formatting</a></li>
+  <li>
+<a href="#headings" id="toc-headings" class="nav-link" data-scroll-target="#headings"><span class="header-section-number">2</span> Headings</a>
+  <ul class="collapse">
+<li><a href="#header-2" id="toc-header-2" class="nav-link" data-scroll-target="#header-2"><span class="header-section-number">2.1</span> Header 2</a></li>
+  </ul>
+</li>
+  <li><a href="#links-images" id="toc-links-images" class="nav-link" data-scroll-target="#links-images"><span class="header-section-number">3</span> Links &amp; Images</a></li>
+  <li><a href="#lists" id="toc-lists" class="nav-link" data-scroll-target="#lists"><span class="header-section-number">4</span> Lists</a></li>
+  <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables"><span class="header-section-number">5</span> Tables</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code"><span class="header-section-number">6</span> Source Code</a></li>
+  </ul></nav>
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">CHallenge 3 Automated Machine Learning with H20</h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">Tidyverse</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    
     <div>
-    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 6, 2021</p>
-    </div>
+             <p>Joschka Schwarz </p>
+          </div>
   </div>
+    
   
     
   </div>
   
 
 
-</header>
-
-
-<section id="first" class="level1">
-<h1>First</h1>
+</header><div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can delete everything in here and start fresh.</p>
+</div>
+</div>
+<p>This is a <code>.qmd</code> file. It is plain text with special features. Any time you write just like this, it will be compiled to normal text in the website. If you put a # in front of your text, it will create a top level-header.</p>
+<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+<section id="text-formatting" class="level1" data-number="1"><h1 data-number="1">
+<span class="header-section-number">1</span> Text Formatting</h1>
+<p><em>italics</em> and <strong>bold</strong></p>
+<p>superscript<sup>2</sup> / subscript<sub>2</sub></p>
+<p><del>strikethrough</del></p>
+<p><code>verbatim code</code></p>
+<blockquote class="blockquote">
+<p>Blockquote</p>
+</blockquote>
+</section><section id="headings" class="level1" data-number="2"><h1 data-number="2">
+<span class="header-section-number">2</span> Headings</h1>
+<section id="header-2" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="header-2">
+<span class="header-section-number">2.1</span> Header 2</h2>
+<section id="header-3" class="level3"><h3 class="anchored" data-anchor-id="header-3">Header 3</h3>
+<section id="header-4" class="level4"><h4 class="anchored" data-anchor-id="header-4">Header 4</h4>
+<section id="header-5" class="level5"><h5 class="anchored" data-anchor-id="header-5">Header 5</h5>
+<section id="header-6" class="level6"><h6 class="anchored" data-anchor-id="header-6">Header 6</h6>
+</section></section></section></section></section></section><section id="links-images" class="level1" data-number="3"><h1 data-number="3">
+<span class="header-section-number">3</span> Links &amp; Images</h1>
+<p><a href="https://quarto.org" class="uri">https://quarto.org</a></p>
+<p><a href="https://quarto.org">Quarto</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="../../assets/img/elephant.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Caption"><img src="../../assets/img/elephant.png" class="img-fluid figure-img" alt="Caption"></a></p>
+<figcaption>Caption</figcaption></figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="../../assets/img/elephant.png" class="img-fluid figure-img"></p>
+<figcaption>Caption</figcaption></figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="../../assets/img/elephant.png" class="img-fluid figure-img"></p>
+<figcaption>Caption</figcaption></figure>
+</div>
+</section><section id="lists" class="level1" data-number="4"><h1 data-number="4">
+<span class="header-section-number">4</span> Lists</h1>
+<ul>
+<li>
+<p>unordered list</p>
+<ul>
+<li>sub-item 1</li>
+<li>sub-item 2
+<ul>
+<li>sub-sub-item 1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>item 2</p>
+<p>Continued (indent 4 spaces)</p>
+</li>
+</ul>
+<ol type="1">
+<li>ordered list</li>
+<li>item 2
+<ol type="i">
+<li>sub-item 1
+<ol type="A">
+<li>sub-sub-item 1</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<ol class="example" type="1">
+<li>A list whose numbering</li>
+</ol>
+<p>continues after</p>
+<ol start="2" class="example" type="1">
+<li>an interruption</li>
+</ol></section><section id="tables" class="level1" data-number="5"><h1 data-number="5">
+<span class="header-section-number">5</span> Tables</h1>
+<table class="caption-top table">
+<thead><tr class="header">
+<th style="text-align: right;">Right</th>
+<th style="text-align: left;">Left</th>
+<th>Default</th>
+<th style="text-align: center;">Center</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">12</td>
+<td>12</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">123</td>
+<td style="text-align: left;">123</td>
+<td>123</td>
+<td style="text-align: center;">123</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">1</td>
+<td>1</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table></section><section id="source-code" class="level1" data-number="6"><h1 data-number="6">
+<span class="header-section-number">6</span> Source Code</h1>
+<p>Use ``` to delimit blocks of source code:</p>
+<pre><code>code</code></pre>
+<p>Add a language to syntax highlight code blocks:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.3.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyr' was built under R version 4.3.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'dplyr' was built under R version 4.3.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.2     ✔ tidyr     1.3.1
-✔ purrr     1.0.1     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'GGally' was built under R version 4.3.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Registered S3 method overwritten by 'GGally':
-  method from   
-  +.gg   ggplot2</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>employee_attrition_tbl <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"C:/Users/Lenovo/OneDrive/Desktop/daqtascience/ss24-bdml-Fahad221999/Business Decisions with Machine Learning/datasets-1067-1925-WA_Fn-UseC_-HR-Employee-Attrition.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 1470 Columns: 35
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr  (9): Attrition, BusinessTravel, Department, EducationField, Gender, Job...
-dbl (26): Age, DailyRate, DistanceFromHome, Education, EmployeeCount, Employ...
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 1,470
-Columns: 35
-$ Age                      &lt;dbl&gt; 41, 49, 37, 33, 27, 32, 59, 30, 38, 36, 35, 2…
-$ Attrition                &lt;chr&gt; "Yes", "No", "Yes", "No", "No", "No", "No", "…
-$ BusinessTravel           &lt;chr&gt; "Travel_Rarely", "Travel_Frequently", "Travel…
-$ DailyRate                &lt;dbl&gt; 1102, 279, 1373, 1392, 591, 1005, 1324, 1358,…
-$ Department               &lt;chr&gt; "Sales", "Research &amp; Development", "Research …
-$ DistanceFromHome         &lt;dbl&gt; 1, 8, 2, 3, 2, 2, 3, 24, 23, 27, 16, 15, 26, …
-$ Education                &lt;dbl&gt; 2, 1, 2, 4, 1, 2, 3, 1, 3, 3, 3, 2, 1, 2, 3, …
-$ EducationField           &lt;chr&gt; "Life Sciences", "Life Sciences", "Other", "L…
-$ EmployeeCount            &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
-$ EmployeeNumber           &lt;dbl&gt; 1, 2, 4, 5, 7, 8, 10, 11, 12, 13, 14, 15, 16,…
-$ EnvironmentSatisfaction  &lt;dbl&gt; 2, 3, 4, 4, 1, 4, 3, 4, 4, 3, 1, 4, 1, 2, 3, …
-$ Gender                   &lt;chr&gt; "Female", "Male", "Male", "Female", "Male", "…
-$ HourlyRate               &lt;dbl&gt; 94, 61, 92, 56, 40, 79, 81, 67, 44, 94, 84, 4…
-$ JobInvolvement           &lt;dbl&gt; 3, 2, 2, 3, 3, 3, 4, 3, 2, 3, 4, 2, 3, 3, 2, …
-$ JobLevel                 &lt;dbl&gt; 2, 2, 1, 1, 1, 1, 1, 1, 3, 2, 1, 2, 1, 1, 1, …
-$ JobRole                  &lt;chr&gt; "Sales Executive", "Research Scientist", "Lab…
-$ JobSatisfaction          &lt;dbl&gt; 4, 2, 3, 3, 2, 4, 1, 3, 3, 3, 2, 3, 3, 4, 3, …
-$ MaritalStatus            &lt;chr&gt; "Single", "Married", "Single", "Married", "Ma…
-$ MonthlyIncome            &lt;dbl&gt; 5993, 5130, 2090, 2909, 3468, 3068, 2670, 269…
-$ MonthlyRate              &lt;dbl&gt; 19479, 24907, 2396, 23159, 16632, 11864, 9964…
-$ NumCompaniesWorked       &lt;dbl&gt; 8, 1, 6, 1, 9, 0, 4, 1, 0, 6, 0, 0, 1, 0, 5, …
-$ Over18                   &lt;chr&gt; "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", …
-$ OverTime                 &lt;chr&gt; "Yes", "No", "Yes", "Yes", "No", "No", "Yes",…
-$ PercentSalaryHike        &lt;dbl&gt; 11, 23, 15, 11, 12, 13, 20, 22, 21, 13, 13, 1…
-$ PerformanceRating        &lt;dbl&gt; 3, 4, 3, 3, 3, 3, 4, 4, 4, 3, 3, 3, 3, 3, 3, …
-$ RelationshipSatisfaction &lt;dbl&gt; 1, 4, 2, 3, 4, 3, 1, 2, 2, 2, 3, 4, 4, 3, 2, …
-$ StandardHours            &lt;dbl&gt; 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 8…
-$ StockOptionLevel         &lt;dbl&gt; 0, 1, 0, 0, 1, 0, 3, 1, 0, 2, 1, 0, 1, 1, 0, …
-$ TotalWorkingYears        &lt;dbl&gt; 8, 10, 7, 8, 6, 8, 12, 1, 10, 17, 6, 10, 5, 3…
-$ TrainingTimesLastYear    &lt;dbl&gt; 0, 3, 3, 3, 3, 2, 3, 2, 2, 3, 5, 3, 1, 2, 4, …
-$ WorkLifeBalance          &lt;dbl&gt; 1, 3, 3, 3, 3, 2, 2, 3, 3, 2, 3, 3, 2, 3, 3, …
-$ YearsAtCompany           &lt;dbl&gt; 6, 10, 0, 8, 2, 7, 1, 1, 9, 7, 5, 9, 5, 2, 4,…
-$ YearsInCurrentRole       &lt;dbl&gt; 4, 7, 0, 7, 2, 7, 0, 0, 7, 7, 4, 5, 2, 2, 2, …
-$ YearsSinceLastPromotion  &lt;dbl&gt; 0, 1, 0, 3, 2, 3, 0, 0, 1, 7, 0, 0, 4, 1, 0, …
-$ YearsWithCurrManager     &lt;dbl&gt; 5, 7, 0, 0, 2, 6, 0, 0, 8, 7, 3, 8, 3, 2, 3, …</code></pre>
+<pre><code>#&gt; [1] 2</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plot_ggpairs <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">color =</span> <span class="cn">NULL</span>, <span class="at">density_alpha =</span> <span class="fl">0.5</span>) {</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    color_expr <span class="ot">&lt;-</span> <span class="fu">enquo</span>(color)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (rlang<span class="sc">::</span><span class="fu">quo_is_null</span>(color_expr)) {</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        g <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>            <span class="fu">ggpairs</span>(<span class="at">lower =</span> <span class="st">"blank"</span>) </span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        color_name <span class="ot">&lt;-</span> <span class="fu">quo_name</span>(color_expr)</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        g <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>            <span class="fu">ggpairs</span>(<span class="at">mapping =</span> <span class="fu">aes_string</span>(<span class="at">color =</span> color_name), </span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>                    <span class="at">lower =</span> <span class="st">"blank"</span>, <span class="at">legend =</span> <span class="dv">1</span>,</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>                    <span class="at">diag =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="fu">wrap</span>(<span class="st">"densityDiag"</span>, </span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>                                                  <span class="at">alpha =</span> density_alpha))) <span class="sc">+</span></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>            <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(g)</span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>cars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["speed"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["dist"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"4","2":"2"},{"1":"4","2":"10"},{"1":"7","2":"4"},{"1":"7","2":"22"},{"1":"8","2":"16"},{"1":"9","2":"10"},{"1":"10","2":"18"},{"1":"10","2":"26"},{"1":"10","2":"34"},{"1":"11","2":"17"},{"1":"11","2":"28"},{"1":"12","2":"14"},{"1":"12","2":"20"},{"1":"12","2":"24"},{"1":"12","2":"28"},{"1":"13","2":"26"},{"1":"13","2":"34"},{"1":"13","2":"34"},{"1":"13","2":"46"},{"1":"14","2":"26"},{"1":"14","2":"36"},{"1":"14","2":"60"},{"1":"14","2":"80"},{"1":"15","2":"20"},{"1":"15","2":"26"},{"1":"15","2":"54"},{"1":"16","2":"32"},{"1":"16","2":"40"},{"1":"17","2":"32"},{"1":"17","2":"40"},{"1":"17","2":"50"},{"1":"18","2":"42"},{"1":"18","2":"56"},{"1":"18","2":"76"},{"1":"18","2":"84"},{"1":"19","2":"36"},{"1":"19","2":"46"},{"1":"19","2":"68"},{"1":"20","2":"32"},{"1":"20","2":"48"},{"1":"20","2":"52"},{"1":"20","2":"56"},{"1":"20","2":"64"},{"1":"22","2":"66"},{"1":"23","2":"54"},{"1":"24","2":"70"},{"1":"24","2":"92"},{"1":"24","2":"93"},{"1":"24","2":"120"},{"1":"25","2":"85"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">&lt;-</span> employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Attrition, MonthlyIncome, PercentSalaryHike, StockOptionLevel, EnvironmentSatisfaction, WorkLifeBalance, JobInvolvement, OverTime, TrainingTimesLastYear, YearsAtCompany, YearsSinceLastPromotion) <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_ggpairs</span>(<span class="at">color =</span> Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: `aes_string()` was deprecated in ggplot2 3.0.0.
-ℹ Please use tidy evaluation idioms with `aes()`.
-ℹ See also `vignette("ggplot2-in-packages")` for more information.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggsave</span>(<span class="st">"asd.png"</span>,plot, <span class="at">width =</span> <span class="dv">15</span>, <span class="at">height =</span> <span class="dv">15</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">plot</span>(cars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><a href="Chapter_3_Challenge_fahad_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="Chapter_3_Challenge_fahad_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></a></p>
+<figure class="figure"><p><a href="01_tidyverse_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="01_tidyverse_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<p><strong>IMPORTANT:</strong> You can delete everything in here and start fresh. You might want to start by not deleting anything above this line until you know what that stuff is doing.</p>
-<ol type="1">
-<li>Compensation Features What can you deduce about the interaction between Monthly Income and Attrition?</li>
-</ol>
-<ol start="3" type="a">
-<li>Those that are leaving have a lower Monthly Income</li>
-</ol>
-<ol start="2" type="1">
-<li>Compensation Features What can you deduce about the interaction between Percent Salary Hike and Attrition?</li>
-</ol>
-<ol start="4" type="a">
-<li>It’s difficult to deduce anything based on the visualization</li>
-</ol>
-<ol start="3" type="1">
-<li>Compensation Features What can you deduce about the interaction between Stock Option Level and Attrition?</li>
-</ol>
-<ol start="2" type="a">
-<li>Those that are staying have a higher stock option level</li>
-</ol>
-<ol start="4" type="1">
-<li>Survey Results What can you deduce about the interaction between Environment Satisfaction and Attrition?</li>
-</ol>
-<ol type="a">
-<li>A higher proportion of those leaving have a low environment satisfaction level</li>
-</ol>
-<ol start="5" type="1">
-<li>Survey Results What can you deduce about the interaction between Work Life Balance and Attrition</li>
-</ol>
-<ol start="2" type="a">
-<li>Those that are staying have a higher density of 2’s and 3’</li>
-</ol>
-<ol start="6" type="1">
-<li>Performance Data What Can you deduce about the interaction between Job Involvement and Attrition?</li>
-</ol>
-<ol type="a">
-<li>Those that are leaving have a lower density of 3’s and 4’s</li>
-</ol>
-<ol start="7" type="1">
-<li><p>Work-Life Features What can you deduce about the interaction between Over Time and Attrition? a The proportion of those leaving that are working Over Time are high compared to those that are not leaving</p></li>
-<li><p>Training and Education What can you deduce about the interaction between Training Times Last Year and Attrition c It’s difficult to deduce anything based on the visualization</p></li>
-<li><p>Time-Based Features What can you deduce about the interaction between Years At Company and Attrition b People that leave tend to have less working years at the company</p></li>
-<li><p>Time-Based Features What can you deduce about the interaction between Years Since Last Promotion and Attrition?</p></li>
-</ol>
-<ol start="3" type="a">
-<li>It’s difficult to deduce anything based on the visualization</li>
-</ol>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -958,7 +917,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","loop":false});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","loop":false,"descPosition":"bottom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
@@ -990,8 +949,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   
 })();
           </script>
-
-
 
 
 </body></html>
